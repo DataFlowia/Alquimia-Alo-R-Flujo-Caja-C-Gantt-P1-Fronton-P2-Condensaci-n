@@ -303,20 +303,20 @@
       <div class="surface p-5 space-y-3">
         <div class="flex flex-wrap items-center justify-between text-xs sm:text-sm gap-2">
           <span class="font-semibold text-slate-200">Participación en la Inversión Total (Oferta con IVA)</span>
-          <span class="text-slate-400">Total Consolidado: <strong class="text-white">$60.810.144 CLP</strong> <span class="text-slate-500">(Neto: $51.100.962 · IVA: $9.709.183)</span></span>
+          <span class="text-slate-400">Total Consolidado: <strong class="text-white">$56.856.204 CLP</strong> <span class="text-slate-500">(Neto: $47.778.323 · IVA: $9.077.881)</span></span>
         </div>
         <div class="w-full h-4 rounded-full bg-slate-900 overflow-hidden flex p-0.5 border border-[#1e2f3b]">
-          <div id="bar-share-p1" class="h-full bg-p1 rounded-l-full transition-all duration-300" style="width: 38.5%;" title="Proyecto 1: 38,5%"></div>
-          <div id="bar-share-p2" class="h-full bg-p2 rounded-r-full transition-all duration-300" style="width: 61.5%;" title="Proyecto 2: 61,5%"></div>
+          <div id="bar-share-p1" class="h-full bg-p1 rounded-l-full transition-all duration-300" style="width: 60.7%;" title="Proyecto 1: 60,7%"></div>
+          <div id="bar-share-p2" class="h-full bg-p2 rounded-r-full transition-all duration-300" style="width: 39.3%;" title="Proyecto 2: 39,3%"></div>
         </div>
         <div class="flex flex-wrap justify-between text-xs text-slate-300 gap-2">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-p1"></span>
-            <span>Proyecto 1 (Galpón Maquinarias): <strong class="text-p1">$23.440.173 (38,5%)</strong> · Neto: $19.697.625</span>
+            <span>Proyecto 1 (Galpón Maquinarias): <strong class="text-p1">$34.513.834 (60,7%)</strong> · Neto: $29.003.222</span>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-p2"></span>
-            <span>Proyecto 2 (Edificio Oficinas): <strong class="text-p2">$37.369.971 (61,5%)</strong> · Neto: $31.403.337</span>
+            <span>Proyecto 2 (Cambio Revestimiento Frontón): <strong class="text-p2">$22.342.370 (39,3%)</strong> · Neto: $18.775.101</span>
           </div>
         </div>
       </div>
@@ -438,12 +438,11 @@
   <script>
     (function () {
       // =========================================================================
-      // 1. DATOS ESTRUCTURADOS DE AMBOS PROYECTOS
+      // 1. DATOS ESTRUCTURADOS DE AMBOS PROYECTOS (PRESUPUESTOS OFICIALES)
       // =========================================================================
-      // Valores oficiales por proyecto según tabla adjunta:
-      // Proyecto 1: Neto $19.697.625 | IVA $3.742.549 | Total c/IVA $23.440.173
-      // Proyecto 2: Neto $31.403.337 | IVA $5.966.634 | Total c/IVA $37.369.971
-      // Consolidado: Neto $51.100.962 | IVA $9.709.183 | Total c/IVA $60.810.144
+      // Proyecto 1 (Galpón Maquinarias): CD $20.912.020 | GG $6.000.000 | Util $2.091.202 | Neto $29.003.222 | IVA $5.510.612 | Total c/IVA $34.513.834
+      // Proyecto 2 (Cambio Revestimiento Frontón): CD $13.431.910 | GG $4.000.000 | Util $1.343.191 | Neto $18.775.101 | IVA $3.567.269 | Total c/IVA $22.342.370
+      // Consolidado: Neto $47.778.323 | IVA $9.077.881 | Total c/IVA $56.856.204
       // Condiciones de ingreso: 50% Anticipo | 30% Avance | 20% Saldo contra entrega
       const DATA = {
         p1: {
@@ -452,65 +451,66 @@
           name: 'Proyecto 1 — Galpón de Maquinarias',
           shortName: 'Galpón Maquinarias',
           color: '#22d3ee',
-          cdNeto: 14084236,
-          ggNeto: 4204965,
-          utilNeto: 1408424,
-          subtotalNeto: 19697625,
-          iva: 3742549,
-          totalIva: 23440173,
+          cdNeto: 20912020,
+          ggNeto: 6000000,
+          utilNeto: 2091202,
+          subtotalNeto: 29003222,
+          iva: 5510612,
+          totalIva: 34513834,
           plazoBaseDias: 10,
           holguraDias: 5,
           partidas: [
-            { item: 'P1.1', nombre: 'Tratamiento Condensación (450 m² PV4)', montoNeto: 6291250, peso: '44,7%' },
-            { item: 'P1.2', nombre: 'Cambio de Cubiertas Zincalum PV4 (270 m²)', montoNeto: 5237186, peso: '37,2%' },
-            { item: 'P1.3', nombre: 'Ampliación Baño / Baños (24 m² + Eléctrico)', montoNeto: 1503360, peso: '10,7%' },
-            { item: 'P1.4', nombre: 'Arriendo Equipos Elevación (2 Alza Hombres · 10d)', montoNeto: 1052440, peso: '7,5%' }
+            { item: 'P1.1', nombre: 'Tratamiento Condensación (450 m² PV4)', montoNeto: 10028000, peso: '48,0%' },
+            { item: 'P1.2', nombre: 'Cambio de Cubiertas Zincalum PV4 (270 m²)', montoNeto: 8347835, peso: '39,9%' },
+            { item: 'P1.3', nombre: 'Ampliación Baño / Baños (24 m² + Eléctrico)', montoNeto: 2396185, peso: '11,5%' },
+            { item: 'P1.4', nombre: 'Retiro de Excedentes (Alza Hombres s/valor asignado)', montoNeto: 140000, peso: '0,7%' }
           ],
           // Egresos base (40% del costo total de obra en los primeros 10 días hábiles: 25% Sem 1 + 15% Sem 2)
-          baseProv40Iva: [5421303, 3252781, 0, 0, 0],
-          baseProv40Neto: [4572300, 2743380, 0, 0, 0],
-          egresosManoObraEqIva: [5890000, 6168954, 0, 0, 0],
-          egresosManoObraEqNeto: [4980000, 5211640, 0, 0, 0]
+          baseProv40Iva: [8105658, 4863395, 0, 0, 0],
+          baseProv40Neto: [6728005, 4036803, 0, 0, 0],
+          egresosManoObraEqIva: [9520000, 9933579, 0, 0, 0],
+          egresosManoObraEqNeto: [7910000, 8237212, 0, 0, 0]
         },
         p2: {
           id: 'p2',
           code: 'P2',
-          name: 'Proyecto 2 — Revestimiento Frontal Edificio Oficinas',
-          shortName: 'Edificio Oficinas',
+          name: 'Proyecto 2 — Cambio Revestimiento Frontón (Oficinas)',
+          shortName: 'Cambio Revestimiento Frontón',
           color: '#f59e0b',
-          cdNeto: 22452020,
-          ggNeto: 6706115,
-          utilNeto: 2245202,
-          subtotalNeto: 31403337,
-          iva: 5966634,
-          totalIva: 37369971,
+          cdNeto: 13431910,
+          ggNeto: 4000000,
+          utilNeto: 1343191,
+          subtotalNeto: 18775101,
+          iva: 3567269,
+          totalIva: 22342370,
           plazoBaseDias: 20,
           holguraDias: 5,
           partidas: [
-            { item: 'P2.1', nombre: 'Desmontaje Revestimiento Existente y Retiro (304 m²)', montoNeto: 2904560, peso: '12,9%' },
-            { item: 'P2.2', nombre: 'Refuerzos Estructurales y Plomada (+4 cm en cota +4.00 m)', montoNeto: 4898540, peso: '21,8%' },
-            { item: 'P2.3', nombre: 'Suministro e Instal. Revestimiento Zincalum PV4 (304 m²)', montoNeto: 8603980, peso: '38,3%' },
-            { item: 'P2.4', nombre: 'Sellos, Vanos de Ventanas, Hojalatería y Terminaciones', montoNeto: 6044940, peso: '26,9%' }
+            { item: '1', nombre: 'Demolición (Retiro revestimiento 304 m² + canaletas)', montoNeto: 1159200, peso: '8,6%' },
+            { item: '2', nombre: 'Cambio Revestimiento Frontón (PV-4 prepintado + RR.HH.)', montoNeto: 9173100, peso: '68,3%' },
+            { item: '3', nombre: 'Tabique Vano (Metalcon 25 m² + Acrílico 24 m² + RR.HH.)', montoNeto: 1213000, peso: '9,0%' },
+            { item: '4', nombre: 'Canales ALL y Bajadas (30 ml canaleta + 34 ml bajadas)', montoNeto: 1006610, peso: '7,5%' },
+            { item: '5', nombre: 'Maquinaria y Protección Zona (Andamio 30d, flete, taquímetro)', montoNeto: 880000, peso: '6,6%' }
           ],
-          // Egresos base (40% del costo total de obra en los primeros 10 días hábiles: 25% Sem 1 + 15% Sem 2)
-          baseProv40Iva: [8650175, 5190105, 0, 0, 0],
-          baseProv40Neto: [7376786, 4426071, 0, 0, 0],
-          egresosManoObraEqIva: [4620000, 5180000, 5940000, 4870184, 0],
-          egresosManoObraEqNeto: [3910000, 4390000, 5020000, 3926815, 0]
+          // Egresos base (40% del costo total de obra P2 = $20.743.973 c/IVA / $17.431.910 Neto en primeros 10 días: 25% Sem 1 + 15% Sem 2)
+          baseProv40Iva: [5185993, 3111596, 0, 0, 0],
+          baseProv40Neto: [4357978, 2614786, 0, 0, 0],
+          egresosManoObraEqIva: [2850000, 3150000, 3450000, 2996384, 0],
+          egresosManoObraEqNeto: [2395000, 2647000, 2899000, 2518146, 0]
         }
       };
 
       // Actividades para la Carta Gantt Consolidada (Días 1 a 25)
       const GANTT_TASKS = [
-        // PROYECTO 1 (Cian)
+        // PROYECTO 1 (Cian) — Sincronizado con programación de 10 días + 5 holgura
         { proj: 'p1', code: 'P1 · Hito 1', name: 'HITO FINANCIERO P1: Pago Anticipo Contrato', start: 1, end: 1, isHolgura: false, milestoneType: 'anticipo' },
-        { proj: 'p1', code: 'P1 · 1.6–1.7', name: 'Protección nylon pisos (450 m²) y luminarias galpón', start: 1, end: 2, isHolgura: false },
+        { proj: 'p1', code: 'P1 · 1.6–1.7', name: 'Protección nylon pisos (450 m²) y lámparas galpón', start: 1, end: 2, isHolgura: false },
         { proj: 'p1', code: 'P1 · 2.10', name: 'Demolición y retiro de cubierta existente (270 m²)', start: 1, end: 2, isHolgura: false },
-        { proj: 'p1', code: 'P1 · 4.1–4.3', name: 'Operación 2 Alza Hombres (Tijera + Brazo articulado)', start: 1, end: 10, isHolgura: false },
         { proj: 'p1', code: 'P1 · 1.1–1.3', name: 'Limpieza 450 m², 1.350 tornillos tapagotera y lavado', start: 2, end: 6, isHolgura: false },
-        { proj: 'p1', code: 'P1 · 2.5 & 2.8', name: 'Cambio costaneras (12 ml) y pintura estructura galpón', start: 2, end: 4, isHolgura: false },
-        { proj: 'p1', code: 'P1 · 2.1–2.9', name: 'Instalación Cubierta PV4 (270 m²) + hojalatería L 10x20', start: 3, end: 6, isHolgura: false },
-        { proj: 'p1', code: 'P1 · 3.1–3.2', name: 'Ampliación Baños: demolición y tabiques Metalcom (24 m²)', start: 3, end: 5, isHolgura: false },
+        { proj: 'p1', code: 'P1 · 2.5 & 2.8', name: 'Cambio costaneras (12 ml) y pintura estructura', start: 2, end: 4, isHolgura: false },
+        { proj: 'p1', code: 'P1 · 2.1–2.4', name: 'Cubierta Zincalum PV4 (270 m²) + 891 tornillos o-ring', start: 3, end: 5, isHolgura: false },
+        { proj: 'p1', code: 'P1 · 3.1–3.2', name: 'Demolición volcometal y tabiques Metalcom (24 m²)', start: 3, end: 5, isHolgura: false },
+        { proj: 'p1', code: 'P1 · 2.6 & 2.9', name: 'Hojalatería L 10x20 cm (33 ml + 270 ml)', start: 5, end: 6, isHolgura: false },
         { proj: 'p1', code: 'P1 · Hito 2', name: 'HITO FINANCIERO P1: Estado de Pago Avance Físico', start: 6, end: 6, isHolgura: false, milestoneType: 'avance' },
         { proj: 'p1', code: 'P1 · 1.4–1.5', name: 'Puente adherencia y celulosa/pintura proyectada (450 m²)', start: 6, end: 9, isHolgura: false },
         { proj: 'p1', code: 'P1 · 3.3–3.5', name: 'Cielo falso (15 m²), pintura (39 m²) y proyecto eléctrico', start: 6, end: 10, isHolgura: false },
@@ -518,573 +518,610 @@
         { proj: 'p1', code: 'P1 · Hito 3', name: 'HITO FINANCIERO P1: Saldo Contra Entrega y Recepción', start: 10, end: 10, isHolgura: false, milestoneType: 'saldo' },
         { proj: 'p1', code: 'P1 · H1', name: 'Holgura Proyecto 1: contingencia climática y recepción (s/costo)', start: 11, end: 15, isHolgura: true },
 
-        // PROYECTO 2 (Ámbar)
+        // PROYECTO 2 (Ámbar) — Cambio Revestimiento Frontón (5 Capítulos Oficiales, 20 días + 5 holgura)
         { proj: 'p2', code: 'P2 · Hito 1', name: 'HITO FINANCIERO P2: Pago Anticipo Contrato', start: 1, end: 1, isHolgura: false, milestoneType: 'anticipo' },
-        { proj: 'p2', code: 'P2 · 1.1', name: 'Instalación faenas, andamios/elevación y seguridad fachada', start: 1, end: 2, isHolgura: false },
-        { proj: 'p2', code: 'P2 · 1.2', name: 'Desmontaje revestimiento existente fachada (38 m × 8 m)', start: 2, end: 5, isHolgura: false },
-        { proj: 'p2', code: 'P2 · 2.1', name: 'Trazado topográfico y refuerzos estructurales (desplome 4 cm)', start: 5, end: 9, isHolgura: false },
-        { proj: 'p2', code: 'P2 · 2.2', name: 'Tratamiento anticorrosivo y nivelación costaneras frontales', start: 8, end: 11, isHolgura: false },
+        { proj: 'p2', code: 'P2 · 5.1–5.4', name: 'Montaje andamios (8 cuerpos), flete, taquímetro y nylon protección', start: 1, end: 2, isHolgura: false },
+        { proj: 'p2', code: 'P2 · 1.1–1.2', name: 'Demolición: retiro revestimiento existente (304 m²) y canaletas ALL', start: 2, end: 5, isHolgura: false },
+        { proj: 'p2', code: 'P2 · 2.1.3–2.1.15', name: 'Trazado, anticorrosivo epóxico, perfiles Omega y hojalatería base', start: 5, end: 9, isHolgura: false },
+        { proj: 'p2', code: 'P2 · 3.1–3.3', name: 'Tabique vano Metalcon (25 m²) y vano traslúcido acrílico 3 mm (24 m²)', start: 8, end: 11, isHolgura: false },
         { proj: 'p2', code: 'P2 · Hito 2', name: 'HITO FINANCIERO P2: Estado de Pago Avance Físico', start: 11, end: 11, isHolgura: false, milestoneType: 'avance' },
-        { proj: 'p2', code: 'P2 · 3.1', name: 'Montaje revestimiento Zincalum prepintado PV4 (304 m²)', start: 10, end: 15, isHolgura: false },
-        { proj: 'p2', code: 'P2 · 4.1', name: 'Remates en vanos de ventanas, sellos climáticos y alféizares', start: 14, end: 17, isHolgura: false },
-        { proj: 'p2', code: 'P2 · 4.2', name: 'Hojalatería perimetral, cortagoteras y terminaciones finales', start: 17, end: 20, isHolgura: false },
+        { proj: 'p2', code: 'P2 · 2.1.1–2.1.2', name: 'Suministro e instalación planchas PV-4 prepintadas a medida (304 m²)', start: 10, end: 16, isHolgura: false },
+        { proj: 'p2', code: 'P2 · 4.1–4.12', name: 'Canales aguas lluvias (30 ml), cubetas y bajadas PVC 110 mm (34 ml)', start: 15, end: 19, isHolgura: false },
+        { proj: 'p2', code: 'P2 · 2.1.8–2.1.17', name: 'Forros perimetrales 4 ventanas, sellos poliuretano y desarme andamios', start: 18, end: 20, isHolgura: false },
         { proj: 'p2', code: 'P2 · Hito 3', name: 'HITO FINANCIERO P2: Saldo Contra Entrega y Recepción', start: 20, end: 20, isHolgura: false, milestoneType: 'saldo' },
         { proj: 'p2', code: 'P2 · H2', name: 'Holgura Proyecto 2: ajustes viento/lluvia y entrega final (s/costo)', start: 21, end: 25, isHolgura: true }
       ];
 
       // =========================================================================
-      // 2. UTILIDADES DE FORMATO MONETARIO Y ESTADO DE LA APLICACIÓN
+      // 2. ESTADO GLOBAL Y UTILIDADES DE FORMATO
       // =========================================================================
-      function fmtCLP(value) {
-        const num = Number(value) || 0;
-        const sign = num < 0 ? '-' : '';
-        const absVal = Math.round(Math.abs(num)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-        return `${sign}$${absVal}`;
-      }
+      const state = {
+        view: 'all',          // 'all' | 'p1' | 'p2'
+        currencyMode: 'iva',  // 'iva' | 'neto'
+        anticipoPct: 50,
+        avancePct: 30,
+        provPct: 40
+      };
 
-      function fmtShort(value) {
-        const num = Number(value) || 0;
-        const sign = num < 0 ? '-' : '';
-        const abs = Math.abs(num);
-        if (abs >= 1000000) {
-          return `${sign}$${(abs / 1000000).toFixed(1).replace('.', ',')}M`;
-        }
-        if (abs >= 1000) {
-          return `${sign}$${Math.round(abs / 1000)}k`;
-        }
-        return `${sign}$${Math.round(abs)}`;
-      }
+      const fmtCLP = (val) => {
+        const rounded = Math.round(val || 0);
+        const sign = rounded < 0 ? '-' : '';
+        return sign + '$' + Math.abs(rounded).toLocaleString('es-CL');
+      };
 
-      let currentView = 'all'; // 'all' | 'p1' | 'p2'
-      let currencyMode = 'iva'; // 'iva' | 'neto'
-      let pctAnticipo = 50;
-      let pctAvance = 30;
-      let pctSaldo = 20;
-      let pctProv = 40;
-
-      // Calcula dinámicamente los arreglos semanales (5 semanas) de ingresos y egresos por proyecto
-      function getProjectWeeklyFlows(projKey) {
-        const p = DATA[projKey];
-        const isIva = currencyMode === 'iva';
-        const total = isIva ? p.totalIva : p.subtotalNeto;
-
-        const mAnticipo = Math.round(total * (pctAnticipo / 100));
-        const mAvance = Math.round(total * (pctAvance / 100));
-        const mSaldo = total - mAnticipo - mAvance; // Evita diferencias de redondeo de $1
-
-        let ingresos = [0, 0, 0, 0, 0];
-        if (projKey === 'p1') {
-          // P1 dura 10 días (Semanas 1 y 2): Anticipo Sem 1, Avance Día 6 (Sem 2) + Saldo Día 10 (Sem 2)
-          ingresos = [mAnticipo, mAvance + mSaldo, 0, 0, 0];
-        } else {
-          // P2 dura 20 días (Semanas 1 a 4): Anticipo Sem 1, Avance Día 11 (Sem 3), Saldo Día 20 (Sem 4)
-          ingresos = [mAnticipo, 0, mAvance, mSaldo, 0];
-        }
-
-        const provRatio = pctProv / 40;
-        const baseProv = isIva ? p.baseProv40Iva : p.baseProv40Neto;
-        const egresosProveedores = baseProv.map(v => Math.round(v * provRatio));
-        const egresosManoObraEq = isIva ? [...p.egresosManoObraEqIva] : [...p.egresosManoObraEqNeto];
-
-        return { ingresos, egresosProveedores, egresosManoObraEq, mAnticipo, mAvance, mSaldo };
-      }
+      const fmtShortCLP = (val) => {
+        const abs = Math.abs(val);
+        const sign = val < 0 ? '-' : '';
+        if (abs >= 1000000) return sign + '$' + (abs / 1000000).toFixed(1).replace('.', ',') + 'M';
+        if (abs >= 1000) return sign + '$' + Math.round(abs / 1000) + 'k';
+        return sign + '$' + Math.round(abs);
+      };
 
       // =========================================================================
-      // 3. RENDERIZADO DE INDICADORES (KPIs)
+      // 3. CÁLCULO FINANCIERO SEMANAL (SEMANAS 1 A 5)
       // =========================================================================
-      function renderKPIs() {
-        const container = document.getElementById('kpi-cards');
-        const badge = document.getElementById('badge-vista');
-        const isIva = currencyMode === 'iva';
+      function computeCashflow() {
+        const isIva = state.currencyMode === 'iva';
+        const saldoPct = Math.max(0, 100 - state.anticipoPct - state.avancePct);
+        const antRatio = state.anticipoPct / 100;
+        const avRatio = state.avancePct / 100;
+        const salRatio = saldoPct / 100;
+        const provScale = state.provPct / 40; // Escala respecto al 40% base
 
-        let invTotal = 0, cdTotal = 0, anticipoMonto = 0, avanceMonto = 0, saldoMonto = 0, provMonto = 0;
+        const buildProjFlow = (proj) => {
+          const totalVenta = isIva ? proj.totalIva : proj.subtotalNeto;
+          const ingresos = [0, 0, 0, 0, 0];
 
-        if (currentView === 'all') {
-          invTotal = isIva ? (DATA.p1.totalIva + DATA.p2.totalIva) : (DATA.p1.subtotalNeto + DATA.p2.subtotalNeto);
-          cdTotal = DATA.p1.cdNeto + DATA.p2.cdNeto;
-          const f1 = getProjectWeeklyFlows('p1');
-          const f2 = getProjectWeeklyFlows('p2');
-          anticipoMonto = f1.mAnticipo + f2.mAnticipo;
-          avanceMonto = f1.mAvance + f2.mAvance;
-          saldoMonto = f1.mSaldo + f2.mSaldo;
-          provMonto = (f1.egresosProveedores[0] + f1.egresosProveedores[1]) +
-                      (f2.egresosProveedores[0] + f2.egresosProveedores[1]);
-          badge.textContent = 'Vista: Consolidado Total (P1 + P2)';
-        } else {
-          const p = DATA[currentView];
-          const f = getProjectWeeklyFlows(currentView);
-          invTotal = isIva ? p.totalIva : p.subtotalNeto;
-          cdTotal = p.cdNeto;
-          anticipoMonto = f.mAnticipo;
-          avanceMonto = f.mAvance;
-          saldoMonto = f.mSaldo;
-          provMonto = f.egresosProveedores[0] + f.egresosProveedores[1];
-          badge.textContent = `Vista: ${p.name}`;
-        }
+          // Hitos de ingreso según programación:
+          // P1: Anticipo Sem 1 (Día 1), Avance Sem 2 (Día 6), Saldo Sem 2 (Día 10)
+          // P2: Anticipo Sem 1 (Día 1), Avance Sem 3 (Día 11), Saldo Sem 4 (Día 20)
+          ingresos[0] += totalVenta * antRatio;
+          if (proj.id === 'p1') {
+            ingresos[1] += totalVenta * avRatio;
+            ingresos[1] += totalVenta * salRatio;
+          } else {
+            ingresos[2] += totalVenta * avRatio;
+            ingresos[3] += totalVenta * salRatio;
+          }
 
-        const labelBase = isIva ? 'c/IVA' : 'Neto';
+          const baseProv = isIva ? proj.baseProv40Iva : proj.baseProv40Neto;
+          const baseMo = isIva ? proj.egresosManoObraEqIva : proj.egresosManoObraEqNeto;
 
-        container.innerHTML = `
-          <div class="surface p-5 space-y-1.5">
-            <span class="text-xs font-semibold text-slate-400">Inversión Total (${labelBase})</span>
-            <p class="text-2xl sm:text-3xl font-extrabold text-white">${fmtCLP(invTotal)}</p>
-            <p class="text-xs text-slate-400">Costo Directo Neto: <strong class="text-slate-200">${fmtCLP(cdTotal)}</strong></p>
-          </div>
-          <div class="surface p-5 space-y-1.5 border-l-4 border-l-emerald-500">
-            <span class="text-xs font-semibold text-emerald-400">Anticipo Solicitado (${pctAnticipo}%)</span>
-            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400">${fmtCLP(anticipoMonto)}</p>
-            <p class="text-xs text-slate-400">Ingreso inmediato Semana 1 (Día 1)</p>
-          </div>
-          <div class="surface p-5 space-y-1.5 border-l-4 border-l-cyan-400">
-            <span class="text-xs font-semibold text-cyan-300">Avance (${pctAvance}%) + Saldo (${pctSaldo}%)</span>
-            <p class="text-xl sm:text-2xl font-extrabold text-white">${fmtCLP(avanceMonto)} <span class="text-sm font-semibold text-amber-400">/ ${fmtCLP(saldoMonto)}</span></p>
-            <p class="text-xs text-slate-400">Cobro según hitos de avance y entrega</p>
-          </div>
-          <div class="surface p-5 space-y-1.5 border-l-4 border-l-rose-500">
-            <span class="text-xs font-semibold text-rose-400">Pago Proveedores (${pctProv}% · 10 días)</span>
-            <p class="text-2xl sm:text-3xl font-extrabold text-rose-400">${fmtCLP(provMonto)}</p>
-            <p class="text-xs text-slate-400">Desembolso Semanas 1 y 2</p>
-          </div>
-        `;
-      }
+          const egresosProv = baseProv.map((v) => v * provScale);
+          const egresosMo = [...baseMo];
+          const egresosTot = egresosProv.map((v, i) => v + egresosMo[i]);
+          const netoSemanal = ingresos.map((ing, i) => ing - egresosTot[i]);
 
-      // =========================================================================
-      // 4. CÁLCULO Y RENDERIZADO DEL FLUJO DE CAJA (TABLA + GRÁFICO SVG)
-      // =========================================================================
-      function getCashflowSeries() {
-        const p1 = getProjectWeeklyFlows('p1');
-        const p2 = getProjectWeeklyFlows('p2');
+          return {
+            totalVenta,
+            ingresos,
+            egresosProv,
+            egresosMo,
+            egresosTot,
+            netoSemanal
+          };
+        };
 
-        const weeks = ['Semana 1 (D1–5)', 'Semana 2 (D6–10)', 'Semana 3 (D11–15)', 'Semana 4 (D16–20)', 'Semana 5 Holg.'];
-        const ingP1 = [...p1.ingresos];
-        const ingP2 = [...p2.ingresos];
-        const provP1 = [...p1.egresosProveedores];
-        const provP2 = [...p2.egresosProveedores];
-        const moP1 = [...p1.egresosManoObraEq];
-        const moP2 = [...p2.egresosManoObraEq];
+        const f1 = buildProjFlow(DATA.p1);
+        const f2 = buildProjFlow(DATA.p2);
 
-        const ingTot = [], egrTot = [], netWeek = [], accBalance = [];
+        const activeFlows =
+          state.view === 'p1' ? [f1] : state.view === 'p2' ? [f2] : [f1, f2];
+
+        const sumArr = (key) =>
+          [0, 1, 2, 3, 4].map((w) =>
+            activeFlows.reduce((acc, f) => acc + f[key][w], 0)
+          );
+
+        const totalVenta = activeFlows.reduce((acc, f) => acc + f.totalVenta, 0);
+        const ingresos = sumArr('ingresos');
+        const egresosProv = sumArr('egresosProv');
+        const egresosMo = sumArr('egresosMo');
+        const egresosTot = sumArr('egresosTot');
+        const netoSemanal = sumArr('netoSemanal');
+
+        const acumulado = [];
         let running = 0;
-
         for (let i = 0; i < 5; i++) {
-          let inc = 0, out = 0;
-          if (currentView === 'all' || currentView === 'p1') {
-            inc += ingP1[i];
-            out += provP1[i] + moP1[i];
-          }
-          if (currentView === 'all' || currentView === 'p2') {
-            inc += ingP2[i];
-            out += provP2[i] + moP2[i];
-          }
-          const net = inc - out;
-          running += net;
-          ingTot.push(inc);
-          egrTot.push(out);
-          netWeek.push(net);
-          accBalance.push(running);
+          running += netoSemanal[i];
+          acumulado.push(running);
         }
 
-        return { weeks, ingP1, ingP2, provP1, provP2, moP1, moP2, ingTot, egrTot, netWeek, accBalance };
+        const totalIngresos = ingresos.reduce((a, b) => a + b, 0);
+        const totalEgresos = egresosTot.reduce((a, b) => a + b, 0);
+        const saldoFinal = acumulado[4];
+        const minCaja = Math.min(...acumulado);
+
+        return {
+          saldoPct,
+          totalVenta,
+          ingresos,
+          egresosProv,
+          egresosMo,
+          egresosTot,
+          netoSemanal,
+          acumulado,
+          totalIngresos,
+          totalEgresos,
+          saldoFinal,
+          minCaja
+        };
       }
 
-      function renderCashflowTable() {
-        const table = document.getElementById('cashflow-table');
-        const s = getCashflowSeries();
+      // =========================================================================
+      // 4. RENDERIZADO DE INDICADORES KPI
+      // =========================================================================
+      function renderKPIs(cf) {
+        const isIva = state.currencyMode === 'iva';
+        const baseLabel = isIva ? 'c/IVA (19%)' : 'Neto (s/IVA)';
+        const marginPct =
+          cf.totalIngresos > 0
+            ? ((cf.saldoFinal / cf.totalIngresos) * 100).toFixed(1).replace('.', ',')
+            : '0,0';
 
-        const sum = (arr) => arr.reduce((a, b) => a + b, 0);
-        const showP1 = currentView === 'all' || currentView === 'p1';
-        const showP2 = currentView === 'all' || currentView === 'p2';
+        const cards = [
+          {
+            title: `Monto Oferta ${baseLabel}`,
+            value: fmtCLP(cf.totalVenta),
+            sub:
+              state.view === 'all'
+                ? 'P1 (60,7%) + P2 (39,3%)'
+                : state.view === 'p1'
+                ? 'Plazo base: 10 días hábiles'
+                : 'Plazo base: 20 días hábiles',
+            accent: 'border-t-cyan-400 text-white'
+          },
+          {
+            title: `Anticipo Inicial (${state.anticipoPct}%)`,
+            value: fmtCLP(cf.ingresos[0]),
+            sub: 'Ingreso en Semana 1 (Día 1)',
+            accent: 'border-t-emerald-400 text-emerald-400'
+          },
+          {
+            title: `Egresos Totales Obra`,
+            value: fmtCLP(cf.totalEgresos),
+            sub: `Incluye ${state.provPct}% prov. en Sem 1–2`,
+            accent: 'border-t-rose-400 text-rose-400'
+          },
+          {
+            title: `Margen / Caja Final Sem 5`,
+            value: fmtCLP(cf.saldoFinal),
+            sub: `Margen s/venta: ${marginPct}% · Mín. caja: ${fmtShortCLP(cf.minCaja)}`,
+            accent:
+              cf.saldoFinal >= 0
+                ? 'border-t-amber-400 text-amber-300'
+                : 'border-t-rose-500 text-rose-400'
+          }
+        ];
 
-        let html = `
-          <thead>
-            <tr>
-              <th class="text-left min-w-[270px]">Concepto / Partida Financiera</th>
-              ${s.weeks.map(w => `<th class="text-right min-w-[125px]">${w}</th>`).join('')}
-              <th class="text-right min-w-[135px] text-white">Total Acumulado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- INGRESOS -->
-            <tr class="bg-emerald-950/25">
-              <td colspan="7" class="font-bold text-emerald-400 text-xs uppercase tracking-wider">A. Ingresos por Estados de Pago (${pctAnticipo}% Anticipo · ${pctAvance}% Avance · ${pctSaldo}% Cierre)</td>
-            </tr>
-        `;
-// ... existing code ... -->
-        if (showP1) {
-          html += `
-            <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p1"></span> P1 Proveedores (${pctProv}% en Días 1–10)</td>
-              ${s.provP1.map(v => `<td class="text-right text-rose-300/90">${v ? fmtCLP(-v) : '—'}</td>`).join('')}
-              <td class="text-right font-semibold text-rose-300">${fmtCLP(-sum(s.provP1))}</td>
-            </tr>
-            <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p1/50"></span> P1 Mano de Obra, Alza Hombres, GG e IVA</td>
-              ${s.moP1.map(v => `<td class="text-right text-slate-300">${v ? fmtCLP(-v) : '—'}</td>`).join('')}
-              <td class="text-right font-semibold text-slate-200">${fmtCLP(-sum(s.moP1))}</td>
-            </tr>
-          `;
-        }
-
-        if (showP2) {
-          html += `
-            <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p2"></span> P2 Proveedores (${pctProv}% en Días 1–10)</td>
-              ${s.provP2.map(v => `<td class="text-right text-rose-300/90">${v ? fmtCLP(-v) : '—'}</td>`).join('')}
-              <td class="text-right font-semibold text-rose-300">${fmtCLP(-sum(s.provP2))}</td>
-            </tr>
-            <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p2/50"></span> P2 Mano de Obra, Andamios, GG e IVA</td>
-              ${s.moP2.map(v => `<td class="text-right text-slate-300">${v ? fmtCLP(-v) : '—'}</td>`).join('')}
-              <td class="text-right font-semibold text-slate-200">${fmtCLP(-sum(s.moP2))}</td>
-            </tr>
-          `;
-        }
-
-        html += `
-            <tr class="bg-[#26141a] font-bold">
-              <td class="text-rose-300">TOTAL EGRESOS SEMANALES</td>
-              ${s.egrTot.map(v => `<td class="text-right text-rose-300">${fmtCLP(-v)}</td>`).join('')}
-              <td class="text-right text-rose-300">${fmtCLP(-sum(s.egrTot))}</td>
-            </tr>
-
-            <!-- RESULTADO Y ACUMULADO -->
-            <tr class="bg-[#132029] font-bold border-t-2 border-slate-600">
-              <td class="text-white">FLUJO NETO SEMANAL (Ingresos − Egresos)</td>
-              ${s.netWeek.map(v => `<td class="text-right ${v >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${fmtCLP(v)}</td>`).join('')}
-              <td class="text-right text-cyan-300">${fmtCLP(sum(s.netWeek))}</td>
-            </tr>
-            <tr class="bg-[#162b38] font-extrabold text-sm border-t border-cyan-500/50">
-              <td class="text-cyan-300">SALDO DE CAJA ACUMULADO</td>
-              ${s.accBalance.map(v => `<td class="text-right ${v >= 0 ? 'text-cyan-300' : 'text-rose-400'}">${fmtCLP(v)}</td>`).join('')}
-              <td class="text-right text-white">${fmtCLP(s.accBalance[4])}</td>
-            </tr>
-          </tbody>
-        `;
-
-        table.innerHTML = html;
+        const container = document.getElementById('kpi-cards');
+        container.innerHTML = cards
+          .map(
+            (c) => `
+            <div class="surface p-5 border-t-2 ${c.accent.split(' ')[0]} space-y-1.5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">${c.title}</p>
+              <p class="text-2xl font-extrabold ${c.accent.split(' ')[1]}">${c.value}</p>
+              <p class="text-xs text-slate-400">${c.sub}</p>
+            </div>
+          `
+          )
+          .join('');
       }
 
-      function renderCashflowChart() {
+      // =========================================================================
+      // 5. RENDERIZADO DE GRÁFICO SVG Y TABLA DE FLUJO DE CAJA
+      // =========================================================================
+      function renderCashflowChart(cf) {
         const container = document.getElementById('cashflow-chart');
-        const s = getCashflowSeries();
+        const weeks = ['Semana 1\n(Días 1–5)', 'Semana 2\n(Días 6–10)', 'Semana 3\n(Días 11–15)', 'Semana 4\n(Días 16–20)', 'Semana 5\n(Holgura 21–25)'];
+        const W = 820;
+        const H = 250;
+        const padL = 72;
+        const padR = 28;
+        const padT = 24;
+        const padB = 46;
+        const chartW = W - padL - padR;
+        const chartH = H - padT - padB;
 
-        const width = 880;
-        const height = 270;
-        const padL = 70, padR = 30, padT = 25, padB = 42;
-        const plotW = width - padL - padR;
-        const plotH = height - padT - padB;
+        const allVals = [
+          ...cf.ingresos,
+          ...cf.egresosTot,
+          ...cf.acumulado,
+          0
+        ];
+        const maxVal = Math.max(...allVals, 1000000);
+        const minVal = Math.min(...allVals, 0);
+        const span = maxVal - minVal || 1;
 
-        const maxVal = Math.max(...s.ingTot, ...s.egrTot, ...s.accBalance, 1000000) * 1.15;
-        const minVal = Math.min(0, ...s.netWeek, ...s.accBalance);
-        const range = maxVal - minVal;
-
-        const yPos = (val) => padT + ((maxVal - val) / range) * plotH;
+        const yPos = (v) => padT + ((maxVal - v) / span) * chartH;
         const zeroY = yPos(0);
 
-        const colW = plotW / 5;
-        let svg = `<svg viewBox="0 0 ${width} ${height}" class="w-full min-w-[640px] h-auto select-none">`;
+        const groupW = chartW / 5;
+        const barW = 24;
 
-        // Líneas horizontales guía
+        let svg = `<svg viewBox="0 0 ${W} ${H}" class="w-full min-w-[640px] h-auto select-none">`;
+
+        // Líneas guía horizontales
         const steps = 4;
-        for (let i = 0; i <= steps; i++) {
-          const val = minVal + (range * i) / steps;
+        for (let s = 0; s <= steps; s++) {
+          const val = minVal + (span * s) / steps;
           const y = yPos(val);
-          svg += `
-            <line x1="${padL}" y1="${y}" x2="${width - padR}" y2="${y}" stroke="#1e2f3b" stroke-dasharray="3 3" />
-            <text x="${padL - 8}" y="${y + 4}" text-anchor="end" fill="#64748b" font-size="10">${fmtShort(val)}</text>
-          `;
+          svg += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#1e2f3b" stroke-dasharray="3 3" />`;
+          svg += `<text x="${padL - 8}" y="${y + 4}" text-anchor="end" fill="#64748b" font-size="10" font-family="Inter, sans-serif">${fmtShortCLP(val)}</text>`;
         }
 
-        // Línea base cero
-        svg += `<line x1="${padL}" y1="${zeroY}" x2="${width - padR}" y2="${zeroY}" stroke="#475569" stroke-width="1.2" />`;
+        // Eje cero
+        svg += `<line x1="${padL}" y1="${zeroY}" x2="${W - padR}" y2="${zeroY}" stroke="#334155" stroke-width="1.2" />`;
 
-        // Barras por semana (Ingresos y Egresos)
         const linePoints = [];
-        s.weeks.forEach((wk, i) => {
-          const cx = padL + colW * i + colW / 2;
-          const barW = 24;
 
-          // Barra Ingreso
-          const incH = Math.abs(yPos(s.ingTot[i]) - zeroY);
-          const incY = yPos(s.ingTot[i]);
-          if (s.ingTot[i] > 0) {
-            svg += `<rect x="${cx - barW - 2}" y="${incY}" width="${barW}" height="${incH}" rx="4" fill="#10b981" opacity="0.88">
-              <title>${wk} · Ingresos: ${fmtCLP(s.ingTot[i])}</title>
-            </rect>`;
-          }
+        weeks.forEach((wk, i) => {
+          const cx = padL + groupW * i + groupW / 2;
 
-          // Barra Egreso
-          const egrH = Math.abs(yPos(s.egrTot[i]) - zeroY);
-          const egrY = yPos(s.egrTot[i]);
-          if (s.egrTot[i] > 0) {
-            svg += `<rect x="${cx + 2}" y="${egrY}" width="${barW}" height="${egrH}" rx="4" fill="#f43f5e" opacity="0.88">
-              <title>${wk} · Egresos: ${fmtCLP(s.egrTot[i])}</title>
-            </rect>`;
-          }
+          // Barra Ingresos
+          const ingVal = cf.ingresos[i];
+          const ingTop = yPos(ingVal);
+          const ingH = Math.max(2, zeroY - ingTop);
+          svg += `<rect x="${cx - barW - 3}" y="${ingTop}" width="${barW}" height="${ingH}" rx="4" fill="#10b981" opacity="0.9">
+            <title>Ingresos Sem ${i + 1}: ${fmtCLP(ingVal)}</title>
+          </rect>`;
 
-          // Etiqueta eje X
-          svg += `<text x="${cx}" y="${height - 14}" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600">${wk}</text>`;
+          // Barra Egresos
+          const egVal = cf.egresosTot[i];
+          const egTop = yPos(egVal);
+          const egH = Math.max(2, zeroY - egTop);
+          svg += `<rect x="${cx + 3}" y="${egTop}" width="${barW}" height="${egH}" rx="4" fill="#f43f5e" opacity="0.9">
+            <title>Egresos Sem ${i + 1}: ${fmtCLP(egVal)}</title>
+          </rect>`;
 
-          // Punto de curva acumulada
-          linePoints.push({ x: cx, y: yPos(s.accBalance[i]), val: s.accBalance[i] });
+          // Punto Acumulado
+          const acY = yPos(cf.acumulado[i]);
+          linePoints.push(`${cx},${acY}`);
+
+          // Etiqueta Semana
+          const lines = wk.split('\n');
+          svg += `<text x="${cx}" y="${H - 22}" text-anchor="middle" fill="#cbd5e1" font-size="11" font-weight="600" font-family="Inter, sans-serif">${lines[0]}</text>`;
+          svg += `<text x="${cx}" y="${H - 9}" text-anchor="middle" fill="#64748b" font-size="9.5" font-family="Inter, sans-serif">${lines[1]}</text>`;
         });
 
         // Línea de Saldo Acumulado
-        const pathD = linePoints.map((p, idx) => `${idx === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
-        svg += `<path d="${pathD}" fill="none" stroke="#67e8f9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />`;
+        svg += `<polyline fill="none" stroke="#67e8f9" stroke-width="2.5" points="${linePoints.join(' ')}" />`;
 
-        linePoints.forEach((p) => {
-          svg += `
-            <circle cx="${p.x}" cy="${p.y}" r="5" fill="#080e12" stroke="#67e8f9" stroke-width="2.5">
-              <title>Saldo Acumulado: ${fmtCLP(p.val)}</title>
-            </circle>
-            <text x="${p.x}" y="${p.y - 10}" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="700">${fmtShort(p.val)}</text>
-          `;
+        linePoints.forEach((pt, i) => {
+          const [cx, cy] = pt.split(',');
+          svg += `<circle cx="${cx}" cy="${cy}" r="4.5" fill="#080e12" stroke="#67e8f9" stroke-width="2.5">
+            <title>Caja Acumulada Sem ${i + 1}: ${fmtCLP(cf.acumulado[i])}</title>
+          </circle>`;
+          svg += `<text x="${cx}" y="${Number(cy) - 9}" text-anchor="middle" fill="#a5f3fc" font-size="10" font-weight="700" font-family="Inter, sans-serif">${fmtShortCLP(cf.acumulado[i])}</text>`;
         });
 
         svg += `</svg>`;
         container.innerHTML = svg;
       }
 
+      function renderCashflowTable(cf) {
+        const table = document.getElementById('cashflow-table');
+        const cellVal = (v, cls = '') =>
+          `<td class="text-right ${cls}">${fmtCLP(v)}</td>`;
+
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th class="text-left min-w-[240px]">Concepto Financiero</th>
+              <th class="text-right">Semana 1<br><span class="text-[10px] font-normal text-slate-400">Días 1–5</span></th>
+              <th class="text-right">Semana 2<br><span class="text-[10px] font-normal text-slate-400">Días 6–10</span></th>
+              <th class="text-right">Semana 3<br><span class="text-[10px] font-normal text-slate-400">Días 11–15</span></th>
+              <th class="text-right">Semana 4<br><span class="text-[10px] font-normal text-slate-400">Días 16–20</span></th>
+              <th class="text-right">Semana 5<br><span class="text-[10px] font-normal text-slate-400">Holgura 21–25</span></th>
+              <th class="text-right bg-[#182733] text-white">Total Período</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold text-emerald-400">(+) Ingresos Estados de Pago</td>
+              ${cf.ingresos.map((v) => cellVal(v, 'text-emerald-400 font-semibold')).join('')}
+              ${cellVal(cf.totalIngresos, 'text-emerald-300 font-bold bg-[#111d26]')}
+            </tr>
+            <tr>
+              <td class="text-slate-300 pl-5">(-) Egresos Proveedores (${state.provPct}% en S1–S2)</td>
+              ${cf.egresosProv.map((v) => cellVal(-v, 'text-rose-300/90')).join('')}
+              ${cellVal(-cf.egresosProv.reduce((a, b) => a + b, 0), 'text-rose-300 bg-[#111d26]')}
+            </tr>
+            <tr>
+              <td class="text-slate-300 pl-5">(-) Mano de Obra, Equipos y GG</td>
+              ${cf.egresosMo.map((v) => cellVal(-v, 'text-rose-300/90')).join('')}
+              ${cellVal(-cf.egresosMo.reduce((a, b) => a + b, 0), 'text-rose-300 bg-[#111d26]')}
+            </tr>
+            <tr class="bg-slate-900/50">
+              <td class="font-semibold text-rose-400">Total Egresos Semanales</td>
+              ${cf.egresosTot.map((v) => cellVal(-v, 'text-rose-400 font-semibold')).join('')}
+              ${cellVal(-cf.totalEgresos, 'text-rose-400 font-bold bg-[#111d26]')}
+            </tr>
+            <tr>
+              <td class="font-bold text-white">Flujo Neto Semanal (Ingresos − Egresos)</td>
+              ${cf.netoSemanal
+                .map((v) =>
+                  cellVal(
+                    v,
+                    v >= 0 ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold'
+                  )
+                )
+                .join('')}
+              ${cellVal(
+                cf.saldoFinal,
+                cf.saldoFinal >= 0
+                  ? 'text-emerald-300 font-extrabold bg-[#111d26]'
+                  : 'text-rose-400 font-extrabold bg-[#111d26]'
+              )}
+            </tr>
+            <tr class="bg-[#13202b]">
+              <td class="font-extrabold text-cyan-300">Saldo de Caja Acumulado</td>
+              ${cf.acumulado
+                .map((v) =>
+                  cellVal(
+                    v,
+                    v >= 0 ? 'text-cyan-300 font-extrabold' : 'text-rose-400 font-extrabold'
+                  )
+                )
+                .join('')}
+              ${cellVal(cf.saldoFinal, 'text-amber-300 font-extrabold bg-[#182733]')}
+            </tr>
+          </tbody>
+        `;
+      }
+
       // =========================================================================
-      // 5. RENDERIZADO DE CARTA GANTT CONSOLIDADA
+      // 6. RENDERIZADO DE CARTA GANTT CONSOLIDADA (DÍAS 1 A 25)
       // =========================================================================
       function renderGantt() {
-        const headerRow = document.getElementById('gantt-days-header');
+        const daysHeader = document.getElementById('gantt-days-header');
         const tbody = document.getElementById('gantt-tbody');
+        const saldoPct = Math.max(0, 100 - state.anticipoPct - state.avancePct);
 
-        const dayNames = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi'];
-        let hHtml = '';
+        // Encabezado Días 1..25
+        let headerHtml = '';
         for (let d = 1; d <= 25; d++) {
           const isWkStart = (d - 1) % 5 === 0;
-          const isHol = d >= 21;
-          const dn = dayNames[(d - 1) % 5];
-          hHtml += `<th class="gantt-cell ${isWkStart ? 'wk-sep' : ''} ${isHol ? 'hol-col' : ''}">${dn}<br><span class="text-[10px] font-normal text-slate-400">${d}</span></th>`;
+          const isHolCol = d >= 21;
+          headerHtml += `<th class="gantt-cell ${isWkStart ? 'wk-sep' : ''} ${isHolCol ? 'hol-col' : ''} text-[11px] font-semibold text-slate-300">${d}</th>`;
         }
-        headerRow.innerHTML = hHtml;
+        daysHeader.innerHTML = headerHtml;
 
-        const filteredTasks = GANTT_TASKS.filter(t => currentView === 'all' || t.proj === currentView);
-        const flowsP1 = getProjectWeeklyFlows('p1');
-        const flowsP2 = getProjectWeeklyFlows('p2');
+        // Filtrado de tareas según vista
+        const tasks = GANTT_TASKS.filter((t) =>
+          state.view === 'all' ? true : t.proj === state.view
+        );
 
-        let bHtml = '';
-        filteredTasks.forEach((t) => {
-          const isP1 = t.proj === 'p1';
-          const pf = isP1 ? flowsP1 : flowsP2;
+        tbody.innerHTML = tasks
+          .map((t) => {
+            const isP1 = t.proj === 'p1';
+            const badgeCls = isP1
+              ? 'bg-cyan-950/80 text-cyan-300 border-cyan-700/60'
+              : 'bg-amber-950/80 text-amber-300 border-amber-700/60';
 
-          let taskLabel = t.name;
-          let badgeCls = isP1
-            ? 'bg-cyan-950 text-p1 border-cyan-700/60'
-            : 'bg-amber-950 text-p2 border-amber-700/60';
-          let rowHighlight = '';
-
-          if (t.milestoneType) {
-            rowHighlight = 'bg-emerald-950/20';
-            badgeCls = 'bg-emerald-950 text-emerald-300 border-emerald-600/70';
+            let label = t.name;
             if (t.milestoneType === 'anticipo') {
-              taskLabel = `${t.name} (${pctAnticipo}% = ${fmtCLP(pf.mAnticipo)})`;
+              label += ` (${state.anticipoPct}%)`;
             } else if (t.milestoneType === 'avance') {
-              taskLabel = `${t.name} (${pctAvance}% = ${fmtCLP(pf.mAvance)})`;
+              label += ` (${state.avancePct}%)`;
             } else if (t.milestoneType === 'saldo') {
-              taskLabel = `${t.name} (${pctSaldo}% = ${fmtCLP(pf.mSaldo)})`;
+              label += ` (${saldoPct}%)`;
             }
-          }
 
-          const barCls = t.isHolgura
-            ? (isP1 ? 'bar-hol-p1' : 'bar-hol-p2')
-            : (t.milestoneType ? 'bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.7)]' : (isP1 ? 'bar-p1' : 'bar-p2'));
+            const duration = t.end - t.start + 1;
+            let cells = '';
+            for (let d = 1; d <= 25; d++) {
+              const isWkStart = (d - 1) % 5 === 0;
+              const isHolCol = d >= 21;
+              const active = d >= t.start && d <= t.end;
 
-          const dur = t.end - t.start + 1;
+              let barHtml = '';
+              if (active) {
+                if (t.milestoneType) {
+                  const diamondColor = isP1 ? 'bg-emerald-400 ring-2 ring-cyan-300' : 'bg-emerald-400 ring-2 ring-amber-300';
+                  barHtml = `<span class="inline-block w-3.5 h-3.5 rotate-45 ${diamondColor}" title="${label} (Día ${d})"></span>`;
+                } else if (t.isHolgura) {
+                  barHtml = `<span class="g-bar ${isP1 ? 'bar-hol-p1' : 'bar-hol-p2'}" title="${label}"></span>`;
+                } else {
+                  barHtml = `<span class="g-bar ${isP1 ? 'bar-p1' : 'bar-p2'}" title="${label} (Día ${d})"></span>`;
+                }
+              }
 
-          bHtml += `<tr class="${rowHighlight}">
-            <td class="whitespace-nowrap">
-              <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${badgeCls}">${t.code}</span>
-            </td>
-            <td class="font-medium ${t.milestoneType ? 'text-emerald-300 font-semibold' : 'text-slate-200'}">${taskLabel}</td>
-            <td class="text-center text-slate-400 text-xs whitespace-nowrap">Día ${t.start}</td>
-            <td class="text-center text-slate-400 text-xs whitespace-nowrap">Día ${t.end}</td>
-            <td class="text-right font-semibold text-slate-300">${dur}d</td>
-          `;
+              cells += `<td class="gantt-cell ${isWkStart ? 'wk-sep' : ''} ${isHolCol ? 'hol-col' : ''}">${barHtml}</td>`;
+            }
 
-          for (let d = 1; d <= 25; d++) {
-            const isWkStart = (d - 1) % 5 === 0;
-            const isHol = d >= 21;
-            const active = d >= t.start && d <= t.end;
-            bHtml += `<td class="gantt-cell ${isWkStart ? 'wk-sep' : ''} ${isHol ? 'hol-col' : ''}">
-              ${active ? `<span class="g-bar ${barCls}" title="${taskLabel} (Día ${d})"></span>` : ''}
-            </td>`;
-          }
-
-          bHtml += `</tr>`;
-        });
-
-        tbody.innerHTML = bHtml;
+            return `
+              <tr class="${t.milestoneType ? 'bg-emerald-950/20' : ''}">
+                <td><span class="inline-block px-2 py-0.5 rounded text-[11px] font-bold border ${badgeCls}">${t.code}</span></td>
+                <td class="text-xs ${t.milestoneType ? 'font-bold text-emerald-300' : t.isHolgura ? 'italic text-slate-400' : 'text-slate-200'}">${label}</td>
+                <td class="text-center text-xs text-slate-400">Día ${t.start}</td>
+                <td class="text-center text-xs text-slate-400">Día ${t.end}</td>
+                <td class="text-right text-xs font-semibold text-slate-300">${duration}d</td>
+                ${cells}
+              </tr>
+            `;
+          })
+          .join('');
       }
 
       // =========================================================================
-      // 6. RENDERIZADO DE TARJETAS PRESUPUESTARIAS BASE
+      // 7. RENDERIZADO DE DESGLOSE PRESUPUESTARIO POR PROYECTO
       // =========================================================================
-      function renderBudgetCards() {
+      function renderBudgets() {
         const container = document.getElementById('budget-cards-container');
-        if (!container) return;
+        const projects =
+          state.view === 'p1'
+            ? [DATA.p1]
+            : state.view === 'p2'
+            ? [DATA.p2]
+            : [DATA.p1, DATA.p2];
 
-        const keys = currentView === 'all' ? ['p1', 'p2'] : [currentView];
-        container.innerHTML = keys.map((key) => {
-          const p = DATA[key];
-          const isP1 = key === 'p1';
-          const borderAccent = isP1 ? 'border-t-4 border-t-cyan-400' : 'border-t-4 border-t-amber-400';
-          const badgeCls = isP1
-            ? 'bg-cyan-950 text-p1 border-cyan-700/60'
-            : 'bg-amber-950 text-p2 border-amber-700/60';
+        container.innerHTML = projects
+          .map((p) => {
+            const isP1 = p.id === 'p1';
+            const borderTop = isP1 ? 'border-t-cyan-400' : 'border-t-amber-400';
+            const titleColor = isP1 ? 'text-p1' : 'text-p2';
 
-          const rows = p.partidas.map((item) => `
-            <tr>
-              <td class="font-mono text-xs text-slate-400 whitespace-nowrap">${item.item}</td>
-              <td class="text-slate-200 font-medium">${item.nombre}</td>
-              <td class="text-right text-slate-300">${item.peso}</td>
-              <td class="text-right font-semibold text-white whitespace-nowrap">${fmtCLP(item.montoNeto)}</td>
-            </tr>
-          `).join('');
+            const rows = p.partidas
+              .map(
+                (item) => `
+                <tr>
+                  <td class="font-semibold text-slate-300">${item.item}</td>
+                  <td class="text-slate-200">${item.nombre}</td>
+                  <td class="text-right text-slate-400">${item.peso}</td>
+                  <td class="text-right font-semibold text-white">${fmtCLP(item.montoNeto)}</td>
+                </tr>
+              `
+              )
+              .join('');
 
-          return `
-            <div class="surface p-5 space-y-4 ${borderAccent}">
-              <div class="flex flex-wrap items-start justify-between gap-2">
-                <div>
-                  <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${badgeCls}">${p.code}</span>
-                  <h3 class="text-base sm:text-lg font-bold text-white mt-1.5">${p.name}</h3>
+            return `
+              <div class="surface p-5 border-t-2 ${borderTop} space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <h3 class="text-base font-bold ${titleColor}">${p.name}</h3>
+                    <p class="text-xs text-slate-400">Plazo contractual: ${p.plazoBaseDias} días hábiles + ${p.holguraDias} días holgura</p>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-[#263a47] text-xs font-bold text-white">
+                    Total c/IVA: ${fmtCLP(p.totalIva)}
+                  </span>
                 </div>
-                <span class="text-xs text-slate-400">Plazo: <strong class="text-slate-200">${p.plazoBaseDias}d</strong> + ${p.holguraDias}d holgura</span>
+
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th class="text-left w-16">Ítem</th>
+                        <th class="text-left">Capítulo / Partida</th>
+                        <th class="text-right w-16">% CD</th>
+                        <th class="text-right w-32">Neto (CLP)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${rows}
+                      <tr class="bg-slate-900/60">
+                        <td colspan="3" class="text-right font-semibold text-slate-300">Costo Directo Neto</td>
+                        <td class="text-right font-bold text-white">${fmtCLP(p.cdNeto)}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="text-right text-slate-400">Gastos Generales</td>
+                        <td class="text-right text-slate-200">${fmtCLP(p.ggNeto)}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="text-right text-slate-400">Utilidad (10% s/CD)</td>
+                        <td class="text-right text-slate-200">${fmtCLP(p.utilNeto)}</td>
+                      </tr>
+                      <tr class="bg-slate-900/60">
+                        <td colspan="3" class="text-right font-bold text-slate-200">Subtotal Neto</td>
+                        <td class="text-right font-bold text-white">${fmtCLP(p.subtotalNeto)}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="text-right text-slate-400">IVA (19%)</td>
+                        <td class="text-right text-slate-200">${fmtCLP(p.iva)}</td>
+                      </tr>
+                      <tr class="bg-[#13202b]">
+                        <td colspan="3" class="text-right font-extrabold ${titleColor}">Total Oferta con IVA</td>
+                        <td class="text-right font-extrabold ${titleColor}">${fmtCLP(p.totalIva)}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-
-              <div class="table-wrap">
-                <table>
-                  <thead>
-                    <tr>
-                      <th class="text-left">Ítem</th>
-                      <th class="text-left">Partida</th>
-                      <th class="text-right">Inc. CD</th>
-                      <th class="text-right">Neto</th>
-                    </tr>
-                  </thead>
-                  <tbody>${rows}</tbody>
-                </table>
-              </div>
-
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs">
-                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
-                  <span class="text-slate-400 block">Subtotal Neto</span>
-                  <strong class="text-slate-100 text-sm">${fmtCLP(p.subtotalNeto)}</strong>
-                </div>
-                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
-                  <span class="text-slate-400 block">IVA (19%)</span>
-                  <strong class="text-slate-100 text-sm">${fmtCLP(p.iva)}</strong>
-                </div>
-                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
-                  <span class="text-slate-400 block">GG + Utilidad</span>
-                  <strong class="text-slate-100 text-sm">${fmtCLP(p.ggNeto + p.utilNeto)}</strong>
-                </div>
-                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
-                  <span class="text-slate-400 block">Total c/IVA</span>
-                  <strong class="${isP1 ? 'text-p1' : 'text-p2'} text-sm">${fmtCLP(p.totalIva)}</strong>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
+            `;
+          })
+          .join('');
       }
 
+      // =========================================================================
+      // 8. ACTUALIZACIÓN INTEGRAL Y MANEJO DE EVENTOS
+      // =========================================================================
       function updateAll() {
-        document.getElementById('display-saldo-pct').textContent = `${pctSaldo}%`;
-        document.getElementById('header-policy-text').textContent = `${pctAnticipo}% Anticipo · ${pctAvance}% Avance · ${pctSaldo}% Contra Entrega`;
-        document.getElementById('cashflow-subtitle').textContent =
-          `Ingresos: ${pctAnticipo}% Anticipo (Semana 1), ${pctAvance}% Estado de Pago Avance (Semana 2/3) y ${pctSaldo}% Liquidación Final (Semana 2/4). Egresos: ${pctProv}% Proveedores en los primeros 10 días (Semanas 1 y 2) + Mano de Obra, Equipos y GG según avance Gantt.`;
+        const saldoPct = Math.max(0, 100 - state.anticipoPct - state.avancePct);
+        document.getElementById('display-saldo-pct').textContent = `${saldoPct}%`;
+        document.getElementById('header-policy-text').textContent =
+          `${state.anticipoPct}% Anticipo · ${state.avancePct}% Avance · ${saldoPct}% Contra Entrega`;
 
-        renderKPIs();
-        renderCashflowChart();
-        renderCashflowTable();
+        const viewNames = {
+          all: 'Vista: Consolidado Total',
+          p1: 'Vista: Proyecto 1 (Galpón)',
+          p2: 'Vista: Proyecto 2 (Oficinas)'
+        };
+        document.getElementById('badge-vista').textContent = viewNames[state.view];
+
+        const cf = computeCashflow();
+        renderKPIs(cf);
+        renderCashflowChart(cf);
+        renderCashflowTable(cf);
         renderGantt();
-        renderBudgetCards();
+        renderBudgets();
       }
 
-      // Sincronización de controles interactivos de Anticipo %, Avance % y Proveedores %
-      const inputAnticipo = document.getElementById('input-anticipo');
-      const rangeAnticipo = document.getElementById('range-anticipo');
-      const inputAvance = document.getElementById('input-avance');
-      const rangeAvance = document.getElementById('range-avance');
-      const inputProv = document.getElementById('input-prov');
-      const warningEl = document.getElementById('payment-warning');
-
-      function syncPercentages(changedSource) {
-        let ant = Math.max(0, Math.min(100, parseInt(inputAnticipo.value, 10) || 0));
-        let ava = Math.max(0, Math.min(100, parseInt(inputAvance.value, 10) || 0));
-
-        if (ant + ava > 100) {
-          warningEl.classList.remove('hidden');
-          if (changedSource === 'anticipo') {
-            ava = 100 - ant;
-          } else {
-            ant = 100 - ava;
-          }
-        } else {
-          warningEl.classList.add('hidden');
-        }
-
-        pctAnticipo = ant;
-        pctAvance = ava;
-        pctSaldo = 100 - ant - ava;
-        pctProv = Math.max(0, Math.min(100, parseInt(inputProv.value, 10) || 0));
-
-        inputAnticipo.value = pctAnticipo;
-        rangeAnticipo.value = pctAnticipo;
-        inputAvance.value = pctAvance;
-        rangeAvance.value = pctAvance;
-        inputProv.value = pctProv;
-
-        updateAll();
-      }
-
-      inputAnticipo.addEventListener('input', () => syncPercentages('anticipo'));
-      rangeAnticipo.addEventListener('input', () => {
-        inputAnticipo.value = rangeAnticipo.value;
-        syncPercentages('anticipo');
-      });
-
-      inputAvance.addEventListener('input', () => syncPercentages('avance'));
-      rangeAvance.addEventListener('input', () => {
-        inputAvance.value = rangeAvance.value;
-        syncPercentages('avance');
-      });
-
-      inputProv.addEventListener('input', () => syncPercentages('prov'));
-
-      document.getElementById('btn-reset-params').addEventListener('click', () => {
-        inputAnticipo.value = 50;
-        rangeAnticipo.value = 50;
-        inputAvance.value = 30;
-        rangeAvance.value = 30;
-        inputProv.value = 40;
-        warningEl.classList.add('hidden');
-        syncPercentages('reset');
-      });
-
-      document.querySelectorAll('.filter-btn').forEach(btn => {
+      // Botones de filtro por proyecto
+      document.querySelectorAll('.filter-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
-          currentView = btn.getAttribute('data-view');
-          document.querySelectorAll('.filter-btn').forEach(b => {
+          state.view = btn.dataset.view;
+          document.querySelectorAll('.filter-btn').forEach((b) => {
             b.classList.remove('active-all', 'active-p1', 'active-p2');
           });
-          if (currentView === 'all') btn.classList.add('active-all');
-          if (currentView === 'p1') btn.classList.add('active-p1');
-          if (currentView === 'p2') btn.classList.add('active-p2');
+          if (state.view === 'all') btn.classList.add('active-all');
+          if (state.view === 'p1') btn.classList.add('active-p1');
+          if (state.view === 'p2') btn.classList.add('active-p2');
           updateAll();
         });
       });
 
+      // Selector Base IVA / Neto
       document.getElementById('currency-mode').addEventListener('change', (e) => {
-        currencyMode = e.target.value;
+        state.currencyMode = e.target.value;
         updateAll();
       });
 
+      // Sincronización inputs numéricos y sliders
+      const inputAnt = document.getElementById('input-anticipo');
+      const rangeAnt = document.getElementById('range-anticipo');
+      const inputAv = document.getElementById('input-avance');
+      const rangeAv = document.getElementById('range-avance');
+      const inputProv = document.getElementById('input-prov');
+      const warningEl = document.getElementById('payment-warning');
+
+      function handlePaymentChange(newAnt, newAv) {
+        let ant = Math.max(0, Math.min(100, Number(newAnt) || 0));
+        let av = Math.max(0, Math.min(100, Number(newAv) || 0));
+
+        if (ant + av > 100) {
+          warningEl.classList.remove('hidden');
+          av = 100 - ant;
+        } else {
+          warningEl.classList.add('hidden');
+        }
+
+        state.anticipoPct = ant;
+        state.avancePct = av;
+        inputAnt.value = ant;
+        rangeAnt.value = ant;
+        inputAv.value = av;
+        rangeAv.value = av;
+        updateAll();
+      }
+
+      inputAnt.addEventListener('input', () => handlePaymentChange(inputAnt.value, state.avancePct));
+      rangeAnt.addEventListener('input', () => handlePaymentChange(rangeAnt.value, state.avancePct));
+      inputAv.addEventListener('input', () => handlePaymentChange(state.anticipoPct, inputAv.value));
+      rangeAv.addEventListener('input', () => handlePaymentChange(state.anticipoPct, rangeAv.value));
+
+      inputProv.addEventListener('input', () => {
+        state.provPct = Math.max(0, Math.min(100, Number(inputProv.value) || 0));
+        updateAll();
+      });
+
+      document.getElementById('btn-reset-params').addEventListener('click', () => {
+        state.provPct = 40;
+        inputProv.value = 40;
+        warningEl.classList.add('hidden');
+        handlePaymentChange(50, 30);
+      });
+
+      // Render inicial
       updateAll();
     })();
   </script>
