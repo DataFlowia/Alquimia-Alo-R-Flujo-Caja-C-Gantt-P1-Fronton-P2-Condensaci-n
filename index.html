@@ -182,7 +182,7 @@
             Flujo de Caja y Carta Gantt Consolidados
           </h1>
           <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
-            Programación física y financiera integrada para <strong class="text-p1">Proyecto 1: Galpón de Maquinarias</strong> (10 días hábiles + 5 días holgura) y <strong class="text-p2">Proyecto 2: Revestimiento Frontal Edificio de Oficinas</strong> (20 días hábiles + 5 días holgura). Política financiera: <strong class="text-emerald-400">50% de anticipo</strong> al inicio y <strong class="text-rose-400">40% de pago a proveedores</strong> durante los primeros 10 días hábiles.
+            Programación física y financiera integrada para <strong class="text-p1">Proyecto 1: Galpón de Maquinarias</strong> (10 días hábiles + 5 días holgura) y <strong class="text-p2">Proyecto 2: Revestimiento Frontal Edificio de Oficinas</strong> (20 días hábiles + 5 días holgura). Política financiera editable: <strong id="header-policy-text" class="text-emerald-400">50% Anticipo · 30% Avance · 20% Contra Entrega</strong> y <strong class="text-rose-400">40% de pago a proveedores</strong> durante los primeros 10 días hábiles.
           </p>
         </div>
 
@@ -193,6 +193,79 @@
             <button type="button" data-view="all" class="filter-btn active-all">Consolidado (P1 + P2)</button>
             <button type="button" data-view="p1" class="filter-btn">Proyecto 1 · Galpón</button>
             <button type="button" data-view="p2" class="filter-btn">Proyecto 2 · Oficinas</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulador Interactivo de Condiciones de Pago y Hitos Gantt -->
+      <div class="bg-[#0b1319] p-4 sm:p-5 rounded-xl border border-[#1e2f3b] space-y-3 no-print">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-white">Simulador Interactivo de Estados de Pago e Hitos Gantt</h2>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="payment-warning" class="hidden text-xs font-semibold text-rose-400 bg-rose-950/60 border border-rose-700/60 px-2.5 py-1 rounded-lg">
+              La suma de Anticipo + Avance no puede superar 100%
+            </span>
+            <button type="button" id="btn-reset-params" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-600 transition cursor-pointer">
+              Restablecer (50% / 30% / 20%)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+          <!-- Campo Anticipo % -->
+          <div class="bg-[#0f181f] p-3.5 rounded-lg border border-[#263a47] space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="input-anticipo" class="text-xs font-semibold text-emerald-400">Anticipo (%)</label>
+              <span class="text-[11px] text-slate-400">Hito: Día 1 (Sem 1)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="number" id="input-anticipo" min="0" max="100" step="1" value="50"
+                class="w-20 bg-[#080e12] border border-emerald-500/50 rounded-lg px-2.5 py-1.5 text-sm font-bold text-white focus:outline-none focus:border-emerald-400" />
+              <input type="range" id="range-anticipo" min="0" max="100" step="1" value="50"
+                class="w-full accent-emerald-400 cursor-pointer" />
+            </div>
+          </div>
+
+          <!-- Campo Avance % -->
+          <div class="bg-[#0f181f] p-3.5 rounded-lg border border-[#263a47] space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="input-avance" class="text-xs font-semibold text-cyan-400">Avance (%)</label>
+              <span class="text-[11px] text-slate-400">P1: Día 6 · P2: Día 11</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="number" id="input-avance" min="0" max="100" step="1" value="30"
+                class="w-20 bg-[#080e12] border border-cyan-500/50 rounded-lg px-2.5 py-1.5 text-sm font-bold text-white focus:outline-none focus:border-cyan-400" />
+              <input type="range" id="range-avance" min="0" max="100" step="1" value="30"
+                class="w-full accent-cyan-400 cursor-pointer" />
+            </div>
+          </div>
+
+          <!-- Saldo Contra Entrega % (Calculado) -->
+          <div class="bg-[#0f181f] p-3.5 rounded-lg border border-[#263a47] space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-amber-400">Saldo Contra Entrega (%)</span>
+              <span class="text-[11px] text-slate-400">P1: Día 10 · P2: Día 20</span>
+            </div>
+            <div class="flex items-baseline justify-between pt-0.5">
+              <span id="display-saldo-pct" class="text-xl font-extrabold text-amber-400">20%</span>
+              <span class="text-[11px] text-slate-400">Automático (100% − Ant − Av)</span>
+            </div>
+          </div>
+
+          <!-- Desfase Pago Proveedores % -->
+          <div class="bg-[#0f181f] p-3.5 rounded-lg border border-[#263a47] space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="input-prov" class="text-xs font-semibold text-rose-400">Pago Proveedores (%)</label>
+              <span class="text-[11px] text-slate-400">Primeros 10 días (S1–S2)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="number" id="input-prov" min="0" max="100" step="5" value="40"
+                class="w-20 bg-[#080e12] border border-rose-500/50 rounded-lg px-2.5 py-1.5 text-sm font-bold text-white focus:outline-none focus:border-rose-400" />
+              <span class="text-[11px] text-slate-400 leading-tight">25% Sem 1 + 15% Sem 2 (proporcional)</span>
+            </div>
           </div>
         </div>
       </div>
@@ -255,9 +328,9 @@
     <section id="flujo-caja" class="space-y-5">
       <div class="border-b border-[#1e2f3b] pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
         <div>
-          <h2 class="text-xl sm:text-2xl font-bold text-white">2. Flujo de Caja Semanal y Acumulado (CLP con IVA)</h2>
-          <p class="text-xs sm:text-sm text-slate-400 mt-1">
-            Ingresos: 50% Anticipo (Semana 1), 30% Estado de Pago Avance (Semana 2) y 20% Liquidación Final (Semana 4). Egresos: 40% Proveedores en los primeros 10 días (Semanas 1 y 2) + Mano de Obra, Equipos y GG según avance Gantt.
+          <h2 class="text-xl sm:text-2xl font-bold text-white">2. Flujo de Caja Semanal y Acumulado</h2>
+          <p id="cashflow-subtitle" class="text-xs sm:text-sm text-slate-400 mt-1">
+            Ingresos: 50% Anticipo (Semana 1), 30% Estado de Pago Avance (Semana 2/3) y 20% Liquidación Final (Semana 2/4). Egresos: 40% Proveedores en los primeros 10 días (Semanas 1 y 2) + Mano de Obra, Equipos y GG según avance Gantt.
           </p>
         </div>
         <div class="flex items-center gap-2 no-print">
@@ -393,20 +466,11 @@
             { item: 'P1.3', nombre: 'Ampliación Baño / Baños (24 m² + Eléctrico)', montoNeto: 1503360, peso: '10,7%' },
             { item: 'P1.4', nombre: 'Arriendo Equipos Elevación (2 Alza Hombres · 10d)', montoNeto: 1052440, peso: '7,5%' }
           ],
-          // Flujo semanal (Semanas 1 a 5) - Valores con IVA ($23.440.173)
-          // Ingresos: 50% Anticipo Sem 1 ($11.720.087), 30% Avance Sem 2 ($7.032.052), 20% Saldo contra entrega Sem 2 ($4.688.034)
-          // Proveedores: 40% del costo ($8.674.084) pagados en primeros 10 días (25% Sem 1 + 15% Sem 2)
-          flujoIva: {
-            ingresos: [11720087, 11720086, 0, 0, 0],
-            egresosProveedores: [5421303, 3252781, 0, 0, 0],
-            egresosManoObraEq: [5890000, 6168954, 0, 0, 0]
-          },
-          // Flujo semanal Neto ($19.697.625)
-          flujoNeto: {
-            ingresos: [9848813, 9848812, 0, 0, 0],
-            egresosProveedores: [4572300, 2743380, 0, 0, 0],
-            egresosManoObraEq: [4980000, 5211640, 0, 0, 0]
-          }
+          // Egresos base (40% del costo total de obra en los primeros 10 días hábiles: 25% Sem 1 + 15% Sem 2)
+          baseProv40Iva: [5421303, 3252781, 0, 0, 0],
+          baseProv40Neto: [4572300, 2743380, 0, 0, 0],
+          egresosManoObraEqIva: [5890000, 6168954, 0, 0, 0],
+          egresosManoObraEqNeto: [4980000, 5211640, 0, 0, 0]
         },
         p2: {
           id: 'p2',
@@ -428,26 +492,18 @@
             { item: 'P2.3', nombre: 'Suministro e Instal. Revestimiento Zincalum PV4 (304 m²)', montoNeto: 8603980, peso: '38,3%' },
             { item: 'P2.4', nombre: 'Sellos, Vanos de Ventanas, Hojalatería y Terminaciones', montoNeto: 6044940, peso: '26,9%' }
           ],
-          // Flujo semanal (Semanas 1 a 5) - Valores con IVA ($37.369.971)
-          // Ingresos: 50% Anticipo Sem 1 ($18.684.986), 30% Avance Sem 3 ($11.210.991), 20% Saldo contra entrega Sem 4 ($7.473.994)
-          // Proveedores: 40% del costo ($13.840.280) pagados en primeros 10 días (25% Sem 1 + 15% Sem 2)
-          flujoIva: {
-            ingresos: [18684986, 0, 11210991, 7473994, 0],
-            egresosProveedores: [8650175, 5190105, 0, 0, 0],
-            egresosManoObraEq: [4620000, 5180000, 5940000, 4870184, 0]
-          },
-          // Flujo semanal Neto ($31.403.337)
-          flujoNeto: {
-            ingresos: [15701669, 0, 9421001, 6280667, 0],
-            egresosProveedores: [7376786, 4426071, 0, 0, 0],
-            egresosManoObraEq: [3910000, 4390000, 5020000, 3926815, 0]
-          }
+          // Egresos base (40% del costo total de obra en los primeros 10 días hábiles: 25% Sem 1 + 15% Sem 2)
+          baseProv40Iva: [8650175, 5190105, 0, 0, 0],
+          baseProv40Neto: [7376786, 4426071, 0, 0, 0],
+          egresosManoObraEqIva: [4620000, 5180000, 5940000, 4870184, 0],
+          egresosManoObraEqNeto: [3910000, 4390000, 5020000, 3926815, 0]
         }
       };
 
       // Actividades para la Carta Gantt Consolidada (Días 1 a 25)
       const GANTT_TASKS = [
         // PROYECTO 1 (Cian)
+        { proj: 'p1', code: 'P1 · Hito 1', name: 'HITO FINANCIERO P1: Pago Anticipo Contrato', start: 1, end: 1, isHolgura: false, milestoneType: 'anticipo' },
         { proj: 'p1', code: 'P1 · 1.6–1.7', name: 'Protección nylon pisos (450 m²) y luminarias galpón', start: 1, end: 2, isHolgura: false },
         { proj: 'p1', code: 'P1 · 2.10', name: 'Demolición y retiro de cubierta existente (270 m²)', start: 1, end: 2, isHolgura: false },
         { proj: 'p1', code: 'P1 · 4.1–4.3', name: 'Operación 2 Alza Hombres (Tijera + Brazo articulado)', start: 1, end: 10, isHolgura: false },
@@ -455,44 +511,83 @@
         { proj: 'p1', code: 'P1 · 2.5 & 2.8', name: 'Cambio costaneras (12 ml) y pintura estructura galpón', start: 2, end: 4, isHolgura: false },
         { proj: 'p1', code: 'P1 · 2.1–2.9', name: 'Instalación Cubierta PV4 (270 m²) + hojalatería L 10x20', start: 3, end: 6, isHolgura: false },
         { proj: 'p1', code: 'P1 · 3.1–3.2', name: 'Ampliación Baños: demolición y tabiques Metalcom (24 m²)', start: 3, end: 5, isHolgura: false },
+        { proj: 'p1', code: 'P1 · Hito 2', name: 'HITO FINANCIERO P1: Estado de Pago Avance Físico', start: 6, end: 6, isHolgura: false, milestoneType: 'avance' },
         { proj: 'p1', code: 'P1 · 1.4–1.5', name: 'Puente adherencia y celulosa/pintura proyectada (450 m²)', start: 6, end: 9, isHolgura: false },
         { proj: 'p1', code: 'P1 · 3.3–3.5', name: 'Cielo falso (15 m²), pintura (39 m²) y proyecto eléctrico', start: 6, end: 10, isHolgura: false },
         { proj: 'p1', code: 'P1 · 4.4', name: 'Retiro de escombros y excedentes Galpón Maquinarias', start: 9, end: 10, isHolgura: false },
+        { proj: 'p1', code: 'P1 · Hito 3', name: 'HITO FINANCIERO P1: Saldo Contra Entrega y Recepción', start: 10, end: 10, isHolgura: false, milestoneType: 'saldo' },
         { proj: 'p1', code: 'P1 · H1', name: 'Holgura Proyecto 1: contingencia climática y recepción (s/costo)', start: 11, end: 15, isHolgura: true },
 
         // PROYECTO 2 (Ámbar)
+        { proj: 'p2', code: 'P2 · Hito 1', name: 'HITO FINANCIERO P2: Pago Anticipo Contrato', start: 1, end: 1, isHolgura: false, milestoneType: 'anticipo' },
         { proj: 'p2', code: 'P2 · 1.1', name: 'Instalación faenas, andamios/elevación y seguridad fachada', start: 1, end: 2, isHolgura: false },
         { proj: 'p2', code: 'P2 · 1.2', name: 'Desmontaje revestimiento existente fachada (38 m × 8 m)', start: 2, end: 5, isHolgura: false },
         { proj: 'p2', code: 'P2 · 2.1', name: 'Trazado topográfico y refuerzos estructurales (desplome 4 cm)', start: 5, end: 9, isHolgura: false },
         { proj: 'p2', code: 'P2 · 2.2', name: 'Tratamiento anticorrosivo y nivelación costaneras frontales', start: 8, end: 11, isHolgura: false },
+        { proj: 'p2', code: 'P2 · Hito 2', name: 'HITO FINANCIERO P2: Estado de Pago Avance Físico', start: 11, end: 11, isHolgura: false, milestoneType: 'avance' },
         { proj: 'p2', code: 'P2 · 3.1', name: 'Montaje revestimiento Zincalum prepintado PV4 (304 m²)', start: 10, end: 15, isHolgura: false },
         { proj: 'p2', code: 'P2 · 4.1', name: 'Remates en vanos de ventanas, sellos climáticos y alféizares', start: 14, end: 17, isHolgura: false },
         { proj: 'p2', code: 'P2 · 4.2', name: 'Hojalatería perimetral, cortagoteras y terminaciones finales', start: 17, end: 20, isHolgura: false },
+        { proj: 'p2', code: 'P2 · Hito 3', name: 'HITO FINANCIERO P2: Saldo Contra Entrega y Recepción', start: 20, end: 20, isHolgura: false, milestoneType: 'saldo' },
         { proj: 'p2', code: 'P2 · H2', name: 'Holgura Proyecto 2: ajustes viento/lluvia y entrega final (s/costo)', start: 21, end: 25, isHolgura: true }
       ];
 
       // =========================================================================
-      // 2. UTILIDADES DE FORMATO
+      // 2. UTILIDADES DE FORMATO MONETARIO Y ESTADO DE LA APLICACIÓN
       // =========================================================================
-      const fmtCLP = (num) => {
+      function fmtCLP(value) {
+        const num = Number(value) || 0;
         const sign = num < 0 ? '-' : '';
-        return sign + '$' + Math.abs(Math.round(num)).toLocaleString('es-CL');
-      };
+        const absVal = Math.round(Math.abs(num)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        return `${sign}$${absVal}`;
+      }
 
-      const fmtShort = (num) => {
+      function fmtShort(value) {
+        const num = Number(value) || 0;
         const sign = num < 0 ? '-' : '';
         const abs = Math.abs(num);
         if (abs >= 1000000) {
-          return sign + '$' + (abs / 1000000).toFixed(1).replace('.', ',') + 'M';
+          return `${sign}$${(abs / 1000000).toFixed(1).replace('.', ',')}M`;
         }
         if (abs >= 1000) {
-          return sign + '$' + Math.round(abs / 1000) + 'k';
+          return `${sign}$${Math.round(abs / 1000)}k`;
         }
-        return sign + '$' + abs;
-      };
+        return `${sign}$${Math.round(abs)}`;
+      }
 
       let currentView = 'all'; // 'all' | 'p1' | 'p2'
       let currencyMode = 'iva'; // 'iva' | 'neto'
+      let pctAnticipo = 50;
+      let pctAvance = 30;
+      let pctSaldo = 20;
+      let pctProv = 40;
+
+      // Calcula dinámicamente los arreglos semanales (5 semanas) de ingresos y egresos por proyecto
+      function getProjectWeeklyFlows(projKey) {
+        const p = DATA[projKey];
+        const isIva = currencyMode === 'iva';
+        const total = isIva ? p.totalIva : p.subtotalNeto;
+
+        const mAnticipo = Math.round(total * (pctAnticipo / 100));
+        const mAvance = Math.round(total * (pctAvance / 100));
+        const mSaldo = total - mAnticipo - mAvance; // Evita diferencias de redondeo de $1
+
+        let ingresos = [0, 0, 0, 0, 0];
+        if (projKey === 'p1') {
+          // P1 dura 10 días (Semanas 1 y 2): Anticipo Sem 1, Avance Día 6 (Sem 2) + Saldo Día 10 (Sem 2)
+          ingresos = [mAnticipo, mAvance + mSaldo, 0, 0, 0];
+        } else {
+          // P2 dura 20 días (Semanas 1 a 4): Anticipo Sem 1, Avance Día 11 (Sem 3), Saldo Día 20 (Sem 4)
+          ingresos = [mAnticipo, 0, mAvance, mSaldo, 0];
+        }
+
+        const provRatio = pctProv / 40;
+        const baseProv = isIva ? p.baseProv40Iva : p.baseProv40Neto;
+        const egresosProveedores = baseProv.map(v => Math.round(v * provRatio));
+        const egresosManoObraEq = isIva ? [...p.egresosManoObraEqIva] : [...p.egresosManoObraEqNeto];
+
+        return { ingresos, egresosProveedores, egresosManoObraEq, mAnticipo, mAvance, mSaldo };
+      }
 
       // =========================================================================
       // 3. RENDERIZADO DE INDICADORES (KPIs)
@@ -502,28 +597,28 @@
         const badge = document.getElementById('badge-vista');
         const isIva = currencyMode === 'iva';
 
-        let invTotal = 0, cdTotal = 0, anticipo50 = 0, prov40 = 0, plazoText = '';
+        let invTotal = 0, cdTotal = 0, anticipoMonto = 0, avanceMonto = 0, saldoMonto = 0, provMonto = 0;
 
         if (currentView === 'all') {
           invTotal = isIva ? (DATA.p1.totalIva + DATA.p2.totalIva) : (DATA.p1.subtotalNeto + DATA.p2.subtotalNeto);
           cdTotal = DATA.p1.cdNeto + DATA.p2.cdNeto;
-          anticipo50 = invTotal * 0.5;
-          prov40 = (DATA.p1.flujoIva.egresosProveedores[0] + DATA.p1.flujoIva.egresosProveedores[1]) +
-                   (DATA.p2.flujoIva.egresosProveedores[0] + DATA.p2.flujoIva.egresosProveedores[1]);
-          if (!isIva) {
-            prov40 = (DATA.p1.flujoNeto.egresosProveedores[0] + DATA.p1.flujoNeto.egresosProveedores[1]) +
-                     (DATA.p2.flujoNeto.egresosProveedores[0] + DATA.p2.flujoNeto.egresosProveedores[1]);
-          }
-          plazoText = '20 días hábiles';
+          const f1 = getProjectWeeklyFlows('p1');
+          const f2 = getProjectWeeklyFlows('p2');
+          anticipoMonto = f1.mAnticipo + f2.mAnticipo;
+          avanceMonto = f1.mAvance + f2.mAvance;
+          saldoMonto = f1.mSaldo + f2.mSaldo;
+          provMonto = (f1.egresosProveedores[0] + f1.egresosProveedores[1]) +
+                      (f2.egresosProveedores[0] + f2.egresosProveedores[1]);
           badge.textContent = 'Vista: Consolidado Total (P1 + P2)';
         } else {
           const p = DATA[currentView];
+          const f = getProjectWeeklyFlows(currentView);
           invTotal = isIva ? p.totalIva : p.subtotalNeto;
           cdTotal = p.cdNeto;
-          anticipo50 = invTotal * 0.5;
-          const f = isIva ? p.flujoIva : p.flujoNeto;
-          prov40 = f.egresosProveedores[0] + f.egresosProveedores[1];
-          plazoText = `${p.plazoBaseDias} días hábiles`;
+          anticipoMonto = f.mAnticipo;
+          avanceMonto = f.mAvance;
+          saldoMonto = f.mSaldo;
+          provMonto = f.egresosProveedores[0] + f.egresosProveedores[1];
           badge.textContent = `Vista: ${p.name}`;
         }
 
@@ -536,19 +631,19 @@
             <p class="text-xs text-slate-400">Costo Directo Neto: <strong class="text-slate-200">${fmtCLP(cdTotal)}</strong></p>
           </div>
           <div class="surface p-5 space-y-1.5 border-l-4 border-l-emerald-500">
-            <span class="text-xs font-semibold text-emerald-400">Anticipo Solicitado (50%)</span>
-            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400">${fmtCLP(anticipo50)}</p>
+            <span class="text-xs font-semibold text-emerald-400">Anticipo Solicitado (${pctAnticipo}%)</span>
+            <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400">${fmtCLP(anticipoMonto)}</p>
             <p class="text-xs text-slate-400">Ingreso inmediato Semana 1 (Día 1)</p>
           </div>
-          <div class="surface p-5 space-y-1.5 border-l-4 border-l-rose-500">
-            <span class="text-xs font-semibold text-rose-400">Pago Proveedores (40% · 10 días)</span>
-            <p class="text-2xl sm:text-3xl font-extrabold text-rose-400">${fmtCLP(prov40)}</p>
-            <p class="text-xs text-slate-400">Desembolso Semanas 1 y 2 (25% + 15%)</p>
+          <div class="surface p-5 space-y-1.5 border-l-4 border-l-cyan-400">
+            <span class="text-xs font-semibold text-cyan-300">Avance (${pctAvance}%) + Saldo (${pctSaldo}%)</span>
+            <p class="text-xl sm:text-2xl font-extrabold text-white">${fmtCLP(avanceMonto)} <span class="text-sm font-semibold text-amber-400">/ ${fmtCLP(saldoMonto)}</span></p>
+            <p class="text-xs text-slate-400">Cobro según hitos de avance y entrega</p>
           </div>
-          <div class="surface p-5 space-y-1.5">
-            <span class="text-xs font-semibold text-slate-400">Plazo de Ejecución Base</span>
-            <p class="text-2xl sm:text-3xl font-extrabold text-white">${plazoText}</p>
-            <p class="text-xs text-slate-400">+ 5 días hábiles de holgura sin costo</p>
+          <div class="surface p-5 space-y-1.5 border-l-4 border-l-rose-500">
+            <span class="text-xs font-semibold text-rose-400">Pago Proveedores (${pctProv}% · 10 días)</span>
+            <p class="text-2xl sm:text-3xl font-extrabold text-rose-400">${fmtCLP(provMonto)}</p>
+            <p class="text-xs text-slate-400">Desembolso Semanas 1 y 2</p>
           </div>
         `;
       }
@@ -557,9 +652,8 @@
       // 4. CÁLCULO Y RENDERIZADO DEL FLUJO DE CAJA (TABLA + GRÁFICO SVG)
       // =========================================================================
       function getCashflowSeries() {
-        const key = currencyMode === 'iva' ? 'flujoIva' : 'flujoNeto';
-        const p1 = DATA.p1[key];
-        const p2 = DATA.p2[key];
+        const p1 = getProjectWeeklyFlows('p1');
+        const p2 = getProjectWeeklyFlows('p2');
 
         const weeks = ['Semana 1 (D1–5)', 'Semana 2 (D6–10)', 'Semana 3 (D11–15)', 'Semana 4 (D16–20)', 'Semana 5 Holg.'];
         const ingP1 = [...p1.ingresos];
@@ -612,46 +706,14 @@
           <tbody>
             <!-- INGRESOS -->
             <tr class="bg-emerald-950/25">
-              <td colspan="7" class="font-bold text-emerald-400 text-xs uppercase tracking-wider">A. Ingresos por Estados de Pago (50% Anticipo · 30% Avance · 20% Cierre)</td>
+              <td colspan="7" class="font-bold text-emerald-400 text-xs uppercase tracking-wider">A. Ingresos por Estados de Pago (${pctAnticipo}% Anticipo · ${pctAvance}% Avance · ${pctSaldo}% Cierre)</td>
             </tr>
         `;
-
+// ... existing code ... -->
         if (showP1) {
           html += `
             <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p1"></span> Ingresos Proyecto 1 — Galpón Maquinarias</td>
-              ${s.ingP1.map(v => `<td class="text-right text-slate-200">${v ? fmtCLP(v) : '—'}</td>`).join('')}
-              <td class="text-right font-bold text-p1">${fmtCLP(sum(s.ingP1))}</td>
-            </tr>
-          `;
-        }
-        if (showP2) {
-          html += `
-            <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p2"></span> Ingresos Proyecto 2 — Edificio Oficinas</td>
-              ${s.ingP2.map(v => `<td class="text-right text-slate-200">${v ? fmtCLP(v) : '—'}</td>`).join('')}
-              <td class="text-right font-bold text-p2">${fmtCLP(sum(s.ingP2))}</td>
-            </tr>
-          `;
-        }
-
-        html += `
-            <tr class="bg-[#112422] font-bold">
-              <td class="text-emerald-300">TOTAL INGRESOS SEMANALES</td>
-              ${s.ingTot.map(v => `<td class="text-right text-emerald-300">${fmtCLP(v)}</td>`).join('')}
-              <td class="text-right text-emerald-300">${fmtCLP(sum(s.ingTot))}</td>
-            </tr>
-
-            <!-- EGRESOS -->
-            <tr class="bg-rose-950/25">
-              <td colspan="7" class="font-bold text-rose-400 text-xs uppercase tracking-wider">B. Egresos Operacionales (40% Proveedores Primeros 10 Días + Mano de Obra, Equipos y GG)</td>
-            </tr>
-        `;
-
-        if (showP1) {
-          html += `
-            <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p1"></span> P1 Proveedores (40% en Días 1–10)</td>
+              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p1"></span> P1 Proveedores (${pctProv}% en Días 1–10)</td>
               ${s.provP1.map(v => `<td class="text-right text-rose-300/90">${v ? fmtCLP(-v) : '—'}</td>`).join('')}
               <td class="text-right font-semibold text-rose-300">${fmtCLP(-sum(s.provP1))}</td>
             </tr>
@@ -666,7 +728,7 @@
         if (showP2) {
           html += `
             <tr>
-              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p2"></span> P2 Proveedores (40% en Días 1–10)</td>
+              <td class="pl-4 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-p2"></span> P2 Proveedores (${pctProv}% en Días 1–10)</td>
               ${s.provP2.map(v => `<td class="text-right text-rose-300/90">${v ? fmtCLP(-v) : '—'}</td>`).join('')}
               <td class="text-right font-semibold text-rose-300">${fmtCLP(-sum(s.provP2))}</td>
             </tr>
@@ -802,25 +864,43 @@
         headerRow.innerHTML = hHtml;
 
         const filteredTasks = GANTT_TASKS.filter(t => currentView === 'all' || t.proj === currentView);
+        const flowsP1 = getProjectWeeklyFlows('p1');
+        const flowsP2 = getProjectWeeklyFlows('p2');
 
         let bHtml = '';
         filteredTasks.forEach((t) => {
           const isP1 = t.proj === 'p1';
-          const badgeCls = isP1
+          const pf = isP1 ? flowsP1 : flowsP2;
+
+          let taskLabel = t.name;
+          let badgeCls = isP1
             ? 'bg-cyan-950 text-p1 border-cyan-700/60'
             : 'bg-amber-950 text-p2 border-amber-700/60';
+          let rowHighlight = '';
+
+          if (t.milestoneType) {
+            rowHighlight = 'bg-emerald-950/20';
+            badgeCls = 'bg-emerald-950 text-emerald-300 border-emerald-600/70';
+            if (t.milestoneType === 'anticipo') {
+              taskLabel = `${t.name} (${pctAnticipo}% = ${fmtCLP(pf.mAnticipo)})`;
+            } else if (t.milestoneType === 'avance') {
+              taskLabel = `${t.name} (${pctAvance}% = ${fmtCLP(pf.mAvance)})`;
+            } else if (t.milestoneType === 'saldo') {
+              taskLabel = `${t.name} (${pctSaldo}% = ${fmtCLP(pf.mSaldo)})`;
+            }
+          }
 
           const barCls = t.isHolgura
             ? (isP1 ? 'bar-hol-p1' : 'bar-hol-p2')
-            : (isP1 ? 'bar-p1' : 'bar-p2');
+            : (t.milestoneType ? 'bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.7)]' : (isP1 ? 'bar-p1' : 'bar-p2'));
 
           const dur = t.end - t.start + 1;
 
-          bHtml += `<tr>
+          bHtml += `<tr class="${rowHighlight}">
             <td class="whitespace-nowrap">
               <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${badgeCls}">${t.code}</span>
             </td>
-            <td class="font-medium text-slate-200">${t.name}</td>
+            <td class="font-medium ${t.milestoneType ? 'text-emerald-300 font-semibold' : 'text-slate-200'}">${taskLabel}</td>
             <td class="text-center text-slate-400 text-xs whitespace-nowrap">Día ${t.start}</td>
             <td class="text-center text-slate-400 text-xs whitespace-nowrap">Día ${t.end}</td>
             <td class="text-right font-semibold text-slate-300">${dur}d</td>
@@ -831,7 +911,7 @@
             const isHol = d >= 21;
             const active = d >= t.start && d <= t.end;
             bHtml += `<td class="gantt-cell ${isWkStart ? 'wk-sep' : ''} ${isHol ? 'hol-col' : ''}">
-              ${active ? `<span class="g-bar ${barCls}" title="${t.name} (Día ${d})"></span>` : ''}
+              ${active ? `<span class="g-bar ${barCls}" title="${taskLabel} (Día ${d})"></span>` : ''}
             </td>`;
           }
 
@@ -842,57 +922,70 @@
       }
 
       // =========================================================================
-      // 6. RENDERIZADO DE DESGLOSE PRESUPUESTARIO
+      // 6. RENDERIZADO DE TARJETAS PRESUPUESTARIAS BASE
       // =========================================================================
       function renderBudgetCards() {
         const container = document.getElementById('budget-cards-container');
-        const projects = [];
-        if (currentView === 'all' || currentView === 'p1') projects.push(DATA.p1);
-        if (currentView === 'all' || currentView === 'p2') projects.push(DATA.p2);
+        if (!container) return;
 
-        container.innerHTML = projects.map(p => {
-          const isP1 = p.id === 'p1';
-          const borderTop = isP1 ? 'border-t-2 border-t-p1' : 'border-t-2 border-t-p2';
-          const textAccent = isP1 ? 'text-p1' : 'text-p2';
+        const keys = currentView === 'all' ? ['p1', 'p2'] : [currentView];
+        container.innerHTML = keys.map((key) => {
+          const p = DATA[key];
+          const isP1 = key === 'p1';
+          const borderAccent = isP1 ? 'border-t-4 border-t-cyan-400' : 'border-t-4 border-t-amber-400';
+          const badgeCls = isP1
+            ? 'bg-cyan-950 text-p1 border-cyan-700/60'
+            : 'bg-amber-950 text-p2 border-amber-700/60';
+
+          const rows = p.partidas.map((item) => `
+            <tr>
+              <td class="font-mono text-xs text-slate-400 whitespace-nowrap">${item.item}</td>
+              <td class="text-slate-200 font-medium">${item.nombre}</td>
+              <td class="text-right text-slate-300">${item.peso}</td>
+              <td class="text-right font-semibold text-white whitespace-nowrap">${fmtCLP(item.montoNeto)}</td>
+            </tr>
+          `).join('');
 
           return `
-            <div class="surface p-5 space-y-4 ${borderTop}">
-              <div class="flex items-start justify-between gap-2 border-b border-[#1e2f3b] pb-3">
+            <div class="surface p-5 space-y-4 ${borderAccent}">
+              <div class="flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <span class="text-xs font-bold uppercase tracking-wider ${textAccent}">${p.code} · Plazo Base ${p.plazoBaseDias} días hábiles</span>
-                  <h3 class="text-lg font-bold text-white mt-0.5">${p.name}</h3>
+                  <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${badgeCls}">${p.code}</span>
+                  <h3 class="text-base sm:text-lg font-bold text-white mt-1.5">${p.name}</h3>
                 </div>
-                <div class="text-right">
-                  <span class="text-[11px] text-slate-400 block">Total c/IVA</span>
-                  <span class="text-lg font-extrabold text-white">${fmtCLP(p.totalIva)}</span>
-                </div>
+                <span class="text-xs text-slate-400">Plazo: <strong class="text-slate-200">${p.plazoBaseDias}d</strong> + ${p.holguraDias}d holgura</span>
               </div>
 
-              <div class="space-y-2">
-                ${p.partidas.map(pt => `
-                  <div class="flex items-center justify-between text-xs sm:text-sm py-1.5 border-b border-[#16242e]">
-                    <span class="text-slate-300 pr-2"><strong class="text-slate-100">${pt.item}</strong> · ${pt.nombre}</span>
-                    <span class="font-semibold text-white whitespace-nowrap">${fmtCLP(pt.montoNeto)} <span class="text-slate-400 font-normal">(${pt.peso})</span></span>
-                  </div>
-                `).join('')}
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="text-left">Ítem</th>
+                      <th class="text-left">Partida</th>
+                      <th class="text-right">Inc. CD</th>
+                      <th class="text-right">Neto</th>
+                    </tr>
+                  </thead>
+                  <tbody>${rows}</tbody>
+                </table>
               </div>
 
-              <div class="bg-[#0b1319] rounded-lg p-3.5 space-y-1.5 text-xs border border-[#1e2f3b]">
-                <div class="flex justify-between text-slate-300">
-                  <span>Costo Directo Neto:</span>
-                  <strong class="text-white">${fmtCLP(p.cdNeto)}</strong>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs">
+                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
+                  <span class="text-slate-400 block">Subtotal Neto</span>
+                  <strong class="text-slate-100 text-sm">${fmtCLP(p.subtotalNeto)}</strong>
                 </div>
-                <div class="flex justify-between text-slate-400">
-                  <span>Gastos Generales (29,87%) + Utilidades (10%):</span>
-                  <span>${fmtCLP(p.ggNeto + p.utilNeto)}</span>
+                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
+                  <span class="text-slate-400 block">IVA (19%)</span>
+                  <strong class="text-slate-100 text-sm">${fmtCLP(p.iva)}</strong>
                 </div>
-                <div class="flex justify-between text-slate-200 pt-1 border-t border-[#1e2f3b]">
-                  <span>Subtotal Oferta Neta:</span>
-                  <strong>${fmtCLP(p.subtotalNeto)}</strong>
+                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
+                  <span class="text-slate-400 block">GG + Utilidad</span>
+                  <strong class="text-slate-100 text-sm">${fmtCLP(p.ggNeto + p.utilNeto)}</strong>
                 </div>
-                <div class="flex justify-between ${textAccent} font-bold text-sm pt-1">
-                  <span>Total Oferta con IVA (19%):</span>
-                  <span>${fmtCLP(p.totalIva)}</span>
+                <div class="bg-[#0b1319] p-2.5 rounded-lg border border-[#1e2f3b]">
+                  <span class="text-slate-400 block">Total c/IVA</span>
+                  <strong class="${isP1 ? 'text-p1' : 'text-p2'} text-sm">${fmtCLP(p.totalIva)}</strong>
                 </div>
               </div>
             </div>
@@ -900,16 +993,79 @@
         }).join('');
       }
 
-      // =========================================================================
-      // 7. CONTROLADORES DE EVENTOS E INICIALIZACIÓN
-      // =========================================================================
       function updateAll() {
+        document.getElementById('display-saldo-pct').textContent = `${pctSaldo}%`;
+        document.getElementById('header-policy-text').textContent = `${pctAnticipo}% Anticipo · ${pctAvance}% Avance · ${pctSaldo}% Contra Entrega`;
+        document.getElementById('cashflow-subtitle').textContent =
+          `Ingresos: ${pctAnticipo}% Anticipo (Semana 1), ${pctAvance}% Estado de Pago Avance (Semana 2/3) y ${pctSaldo}% Liquidación Final (Semana 2/4). Egresos: ${pctProv}% Proveedores en los primeros 10 días (Semanas 1 y 2) + Mano de Obra, Equipos y GG según avance Gantt.`;
+
         renderKPIs();
         renderCashflowChart();
         renderCashflowTable();
         renderGantt();
         renderBudgetCards();
       }
+
+      // Sincronización de controles interactivos de Anticipo %, Avance % y Proveedores %
+      const inputAnticipo = document.getElementById('input-anticipo');
+      const rangeAnticipo = document.getElementById('range-anticipo');
+      const inputAvance = document.getElementById('input-avance');
+      const rangeAvance = document.getElementById('range-avance');
+      const inputProv = document.getElementById('input-prov');
+      const warningEl = document.getElementById('payment-warning');
+
+      function syncPercentages(changedSource) {
+        let ant = Math.max(0, Math.min(100, parseInt(inputAnticipo.value, 10) || 0));
+        let ava = Math.max(0, Math.min(100, parseInt(inputAvance.value, 10) || 0));
+
+        if (ant + ava > 100) {
+          warningEl.classList.remove('hidden');
+          if (changedSource === 'anticipo') {
+            ava = 100 - ant;
+          } else {
+            ant = 100 - ava;
+          }
+        } else {
+          warningEl.classList.add('hidden');
+        }
+
+        pctAnticipo = ant;
+        pctAvance = ava;
+        pctSaldo = 100 - ant - ava;
+        pctProv = Math.max(0, Math.min(100, parseInt(inputProv.value, 10) || 0));
+
+        inputAnticipo.value = pctAnticipo;
+        rangeAnticipo.value = pctAnticipo;
+        inputAvance.value = pctAvance;
+        rangeAvance.value = pctAvance;
+        inputProv.value = pctProv;
+
+        updateAll();
+      }
+
+      inputAnticipo.addEventListener('input', () => syncPercentages('anticipo'));
+      rangeAnticipo.addEventListener('input', () => {
+        inputAnticipo.value = rangeAnticipo.value;
+        syncPercentages('anticipo');
+      });
+
+      inputAvance.addEventListener('input', () => syncPercentages('avance'));
+      rangeAvance.addEventListener('input', () => {
+        inputAvance.value = rangeAvance.value;
+        syncPercentages('avance');
+      });
+
+      inputProv.addEventListener('input', () => syncPercentages('prov'));
+
+      document.getElementById('btn-reset-params').addEventListener('click', () => {
+        inputAnticipo.value = 50;
+        rangeAnticipo.value = 50;
+        inputAvance.value = 30;
+        rangeAvance.value = 30;
+        inputProv.value = 40;
+        warningEl.classList.add('hidden');
+        syncPercentages('reset');
+      });
 
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
